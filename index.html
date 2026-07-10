@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beatrice Baah — Data Analyst & Cybersecurity Specialist</title>
+<title>Beatrice Baah — Software & AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -395,7 +395,7 @@ section { padding: 6rem 8vw; }
 /* ─── PROJECTS ─── */
 #projects { background: var(--cream); }
 .projects-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem; margin-top: 3rem;
 }
 .project-card {
@@ -405,6 +405,7 @@ section { padding: 6rem 8vw; }
   position: relative; overflow: hidden;
   transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s;
   cursor: default;
+  display: flex; flex-direction: column;
 }
 .project-card::before {
   content: ''; position: absolute;
@@ -414,19 +415,48 @@ section { padding: 6rem 8vw; }
 }
 .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .project-card:hover::before { height: 100%; }
+.project-tag-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1rem; }
 .project-tag {
   display: inline-block; background: var(--gold-pale); color: var(--rust);
   font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.25rem 0.8rem; border-radius: 20px; margin-bottom: 1rem;
+  padding: 0.25rem 0.8rem; border-radius: 20px;
   box-shadow: var(--shadow-sm);
 }
 .project-card h3 { font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.6rem; }
-.project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+.project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; flex-grow: 1; }
+.project-tech-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+.project-tech-pill {
+  font-size: 0.72rem; color: var(--charcoal); background: rgba(200,148,58,0.10);
+  border: 1px solid var(--border); padding: 0.2rem 0.65rem; border-radius: 20px;
+}
 .project-metric {
   margin-top: 1rem; padding-top: 1rem;
   border-top: 1px solid var(--border);
   font-size: 0.82rem; color: var(--rust); font-weight: 500;
 }
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; font-weight: 500; color: var(--gold); text-decoration: none;
+}
+.project-link:hover { color: var(--rust); }
+.project-link svg { width: 13px; height: 13px; }
+
+/* ─── LABS (secondary projects) ─── */
+.labs-heading { margin-top: 4rem; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--charcoal); }
+.labs-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.lab-card {
+  background: var(--cream); border: 1px solid var(--border);
+  padding: 1.2rem 1.4rem; border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.lab-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.lab-card .project-tag { margin-bottom: 0.6rem; }
+.lab-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--charcoal); margin-bottom: 0.4rem; }
+.lab-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
 /* ─── CERTIFICATIONS ─── */
 #certifications { background: var(--warm); }
@@ -709,21 +739,21 @@ footer {
   </div>
 
   <div class="hero-left">
-    <div class="hero-tag">Available for freelance work</div>
+    <div class="hero-tag">Open to Software &amp; AI Engineering roles</div>
     <h1 class="hero-name">Beatrice<br><em>Baah</em></h1>
-    <p class="hero-title">Data Analyst &nbsp;·&nbsp; Power BI &amp; Excel Expert &nbsp;·&nbsp; Cybersecurity Analyst</p>
-    <p class="hero-bio">I transform messy data into clear insights, interactive dashboards, and strategic reports. With a Master's in Cybersecurity and a Bachelor's in Statistics, I deliver solutions that are both insightful and secure.</p>
+    <p class="hero-title">Software Engineer &nbsp;·&nbsp; Full-Stack &amp; AI Products &nbsp;·&nbsp; Data &amp; Security Background</p>
+    <p class="hero-bio">I build full-stack products and AI-powered systems — from a hiring platform that grades candidates with Gemini, to a RAG-driven travel agent orchestrating Claude and vector search. That engineering is grounded in a rarer foundation: a statistics degree, an MSc in Cybersecurity, and years spent inside real government data operations — so what I ship is both technically sound and built to hold up under real-world use.</p>
     <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Products Shipped</div></div>
       <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Years Exp.</div></div>
       <div class="stat-item"><div class="stat-num">100K+</div><div class="stat-label">Citizens Served</div></div>
-      <div class="stat-item"><div class="stat-num">25%</div><div class="stat-label">Efficiency Gains</div></div>
     </div>
     <div class="hero-cta-row">
       <a href="#contact" class="btn-primary">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Get In Touch
       </a>
-      <a href="#experience" class="btn-outline">View My Work</a>
+      <a href="#projects" class="btn-outline">View My Work</a>
     </div>
   </div>
 </section>
@@ -731,64 +761,50 @@ footer {
 <!-- SERVICES -->
 <section id="services">
   <div class="section-label">What I offer</div>
-  <h2 class="section-title">End-to-End Data Solutions</h2>
-  <p class="section-sub">From raw data to decision-ready intelligence — I handle the full pipeline.</p>
+  <h2 class="section-title">What I Build</h2>
+  <p class="section-sub">Full-stack products and AI systems, backed by a data &amp; security background most engineers don't have.</p>
   <div class="services-grid">
     <div class="service-card fade-up">
       <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
       </div>
-      <h3>Data Cleaning &amp; Wrangling</h3>
-      <p>Transform messy, unstructured data into clean, usable datasets using Excel, Power Query, and analytical tools.</p>
+      <h3>Full-Stack Web Apps</h3>
+      <p>React/TypeScript frontends on Node.js or Firebase backends — from SaaS dashboards to client-facing sites, shipped end to end.</p>
     </div>
     <div class="service-card fade-up">
       <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
       </div>
-      <h3>Data Analysis &amp; Statistics</h3>
-      <p>Descriptive and inferential analysis: hypothesis testing, regression, forecasting, and predictive modeling.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <h3>Dashboards &amp; Visualization</h3>
-      <p>Interactive dashboards using Power BI, Zoho Analytics, and Excel to clearly communicate data-driven insights.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <h3>Business Intelligence</h3>
-      <p>Automated reports and KPI dashboards that track performance, improve decisions, and align with strategic goals.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <h3>Survey &amp; Research Analysis</h3>
-      <p>Analysis of survey data, research datasets, and academic projects with clear interpretation and professional reporting.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h3>Cybersecurity &amp; Data Protection</h3>
-      <p>Cybersecurity analysis, risk assessment, and data protection practices ensuring integrity and confidentiality.</p>
+      <h3>AI-Powered Products</h3>
+      <p>LLM integration and RAG pipelines with Claude, Gemini, and OpenAI — multimodal search, AI grading, and generated insights, not chatbot demos.</p>
     </div>
     <div class="service-card fade-up">
       <div class="service-icon">
         <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
       </div>
-      <h3>Data Entry &amp; Management</h3>
-      <p>Accurate data entry, web research, data collection, and database organization for reliable data infrastructure.</p>
+      <h3>Cloud &amp; Backend Systems</h3>
+      <p>Firebase, Google Cloud, MongoDB, and Cloud Run services — auth, databases, and APIs designed to hold up in production.</p>
     </div>
     <div class="service-card fade-up">
       <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       </div>
-      <h3>Financial Modeling</h3>
-      <p>Budget forecasting models, variance analysis, and revenue projections that support evidence-based financial planning.</p>
+      <h3>Cybersecurity &amp; SOC Tooling</h3>
+      <p>Threat detection dashboards, network scanning, and incident response — backed by an MSc in Cybersecurity &amp; Digital Forensics.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3>Data Analytics &amp; BI</h3>
+      <p>Power BI dashboards, statistical modeling, and survey analysis — the analytical foundation behind every product decision.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Automation &amp; DevOps</h3>
+      <p>Bash automation, CI-friendly scripts, and Linux system administration that remove manual work from a team's workflow.</p>
     </div>
   </div>
 </section>
@@ -800,25 +816,26 @@ footer {
   <div class="skills-layout">
     <div>
       <div class="skills-col-title">Technical Skills</div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Microsoft Excel (Advanced)</span><span>95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Power BI</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>React &amp; TypeScript</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>Node.js &amp; Firebase</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>Python</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>LLM &amp; RAG Integration (Claude, Gemini)</span><span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>Microsoft Excel &amp; Power BI</span><span>95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
       <div class="skill-bar-item"><div class="skill-bar-label"><span>Statistical Analysis</span><span>92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Data Visualization</span><span>88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>SQL</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-label"><span>SQL &amp; Cloud (GCP, MongoDB)</span><span>78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
       <div class="skill-bar-item"><div class="skill-bar-label"><span>Cybersecurity Analysis</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Python</span><span>65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
     </div>
     <div>
       <div class="skills-col-title">Soft Skills</div>
       <div class="soft-skills">
+        <span class="soft-pill">Product Thinking</span>
         <span class="soft-pill">Analytical Thinking</span>
+        <span class="soft-pill">Shipping End-to-End</span>
         <span class="soft-pill">Attention to Detail</span>
-        <span class="soft-pill">Communication</span>
         <span class="soft-pill">Problem Solving</span>
         <span class="soft-pill">Team Collaboration</span>
-        <span class="soft-pill">Report Writing</span>
         <span class="soft-pill">Stakeholder Management</span>
-        <span class="soft-pill">Time Management</span>
+        <span class="soft-pill">Fast Learner</span>
         <span class="soft-pill">Critical Thinking</span>
         <span class="soft-pill">Leadership</span>
         <span class="soft-pill">Mentoring</span>
@@ -834,15 +851,18 @@ footer {
   <h2 class="section-title">Tools &amp; Technologies</h2>
   <p class="section-sub">Highly proficient with industry-leading platforms for data analysis, visualization, and security.</p>
   <div class="tools-grid">
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">React &amp; TypeScript</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 18V10l4 4 4-4v8"/><path d="M8 6h8"/></svg></span><div class="tool-name">Node.js / Express</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">Python</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="tool-name">Firebase</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="tool-name">Google Cloud</div><div class="tool-level">Intermediate</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="tool-name">MongoDB &amp; SQL</div><div class="tool-level">Intermediate</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></span><div class="tool-name">Claude &amp; Gemini APIs</div><div class="tool-level">Advanced</div></div>
     <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span><div class="tool-name">Microsoft Excel</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 18V10l4 4 4-4v8"/><path d="M8 6h8"/></svg></span><div class="tool-name">Power BI</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span><div class="tool-name">STATA</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></span><div class="tool-name">Minitab</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="tool-name">SQL</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><div class="tool-name">Zoho Analytics</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">Python</div><div class="tool-level">Foundational</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><div class="tool-name">CSPro</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="tool-name">SIEM Tools</div><div class="tool-level">Intermediate</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span><div class="tool-name">Power BI &amp; STATA</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="tool-name">SIEM &amp; Threat Intel</div><div class="tool-level">Intermediate</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><div class="tool-name">Git &amp; GitHub</div><div class="tool-level">Advanced</div></div>
+    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><div class="tool-name">Flutter</div><div class="tool-level">Intermediate</div></div>
   </div>
 </section>
 
@@ -926,30 +946,165 @@ footer {
 <section id="projects">
   <div class="section-label">Proof of Work</div>
   <h2 class="section-title">Projects &amp; Labs</h2>
+  <p class="section-sub">Products I designed and built end to end — not tutorials, not clones.</p>
   <div class="projects-grid">
     <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Full-Stack · AI SaaS</span>
+        <a href="https://github.com/Beatbaah/ProAssess" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h3>ProAssess — AI Hiring Assessment Platform</h3>
+      <p>Full-stack SaaS where recruiters invite candidates by email, candidates complete four timed reasoning modules, and Gemini generates an executive score profile the instant results are submitted. Built the candidate pipeline, side-by-side comparison view, and GDPR data-erasure flow.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">React 19 + TypeScript</span>
+        <span class="project-tech-pill">Firebase</span>
+        <span class="project-tech-pill">Gemini AI</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">AI · Full-Stack</span>
+        <span style="display:flex;gap:0.6rem">
+          <a href="https://github.com/Beatbaah/dream-trip-planner" target="_blank" rel="noopener" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            App
+          </a>
+          <a href="https://github.com/Beatbaah/dream-trip-planner-backend" target="_blank" rel="noopener" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Backend
+          </a>
+        </span>
+      </div>
+      <h3>Dream Trip Planner — AI Travel Agent</h3>
+      <p>Multimodal travel agent: voice, text, and image input flow through Claude for intent analysis, OpenAI embeddings for a pgvector similarity search over Firebase Data Connect, then Claude again to write personalised trip summaries — served from a Node.js backend on Cloud Run to a Flutter app.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">Flutter</span>
+        <span class="project-tech-pill">Node.js + TypeScript</span>
+        <span class="project-tech-pill">Claude + OpenAI</span>
+        <span class="project-tech-pill">Cloud Run</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Cybersecurity</span>
+        <a href="https://github.com/Beatbaah/mySOC" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h3>mySOC — Security Operations Center Dashboard</h3>
+      <p>Production-style SOC platform built solo: live packet capture, rule-based and ML (Isolation Forest) anomaly detection, threat-intel lookups against AbuseIPDB, AlienVault OTX, and VirusTotal, role-gated incident management, and automated executive reporting.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">Python</span>
+        <span class="project-tech-pill">Streamlit</span>
+        <span class="project-tech-pill">Scapy</span>
+        <span class="project-tech-pill">ML Anomaly Detection</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">AI · GovTech</span>
+        <a href="https://github.com/Beatbaah/civicmind-ai" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h3>CivicMind AI — Municipal Intelligence Platform</h3>
+      <p>AI-powered civic administration tool for municipal revenue and performance tracking — Gemini turns raw revenue, department, and performance-contract data into executive insight, with a deterministic analytical engine as a fallback. Built directly from experience inside real municipal data operations.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">React 19 + TypeScript</span>
+        <span class="project-tech-pill">MongoDB</span>
+        <span class="project-tech-pill">Gemini AI</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Fintech</span>
+        <a href="https://github.com/Beatbaah/susu-management-app" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h3>Excellent Susu — Savings Group Management App</h3>
+      <p>Mobile-first app for Susu (rotating savings group) management across four roles — Super Admin, Manager, Collector, Member — covering contributions, payouts, reminders, receipts, and audit logging, architected for financial record integrity.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">React</span>
+        <span class="project-tech-pill">Firebase</span>
+        <span class="project-tech-pill">Role-Based Access</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Full-Stack · GovTech</span>
+        <a href="https://github.com/Beatbaah/Tax-System" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h3>Tax System — Municipal Revenue Management</h3>
+      <p>React and Firebase tax management system built for Bekwai Municipal Assembly — Firestore-backed records, Cloud Functions, and hosting/storage rules serving a real municipal client.</p>
+      <div class="project-tech-row">
+        <span class="project-tech-pill">React</span>
+        <span class="project-tech-pill">Firebase</span>
+        <span class="project-tech-pill">Cloud Functions</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="labs-heading">Labs &amp; Earlier Work</h3>
+  <div class="labs-grid">
+    <div class="lab-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Cloud · AI Agent</span>
+        <a href="https://github.com/Forenly/gcp" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+      <h4>Lawn Mower Deployment Advisor</h4>
+      <p>Google Cloud Rapid Agent Hackathon submission — a Gemini agent that recommends robotic mowers and deployment plans from a MongoDB registry via the MongoDB MCP server.</p>
+    </div>
+    <div class="lab-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">AI · Research Tools</span>
+        <a href="https://github.com/Beatbaah/datatool-ai" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+      <h4>DataTool AI</h4>
+      <p>AI-assisted survey and research project tool — project wizards, structured survey forms, and Gemini-backed reporting on a Firebase-authenticated backend.</p>
+    </div>
+    <div class="lab-card fade-up">
+      <div class="project-tag-row">
+        <span class="project-tag">Cybersecurity</span>
+        <a href="https://github.com/Beatbaah/netscanner" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+      <h4>Network Scanner</h4>
+      <p>Python network reconnaissance tool with modular scanning, intelligence gathering, and reporting for host and service discovery.</p>
+    </div>
+    <div class="lab-card fade-up">
+      <span class="project-tag">DevOps</span>
+      <h4>Linux Automation Toolkit</h4>
+      <p>Production-ready Bash scripts for Linux system administration, reliability checks, and operational automation.</p>
+    </div>
+    <div class="lab-card fade-up">
       <span class="project-tag">Cybersecurity</span>
-      <h3>St. Marven Clinic — Incident Response</h3>
-      <p>Conducted network traffic analysis and log review during a Windows workstation incident. Performed employee threat hunting and vulnerability management to strengthen the clinic's network posture.</p>
-      <div class="project-metric">&#8593; Strengthened network security posture &nbsp;·&nbsp; IBM Click Mini Sprint</div>
+      <h4>St. Marven Clinic — Incident Response</h4>
+      <p>Network traffic analysis and log review during a live Windows workstation incident, plus employee threat hunting and vulnerability management. (IBM Click Mini Sprint)</p>
     </div>
-    <div class="project-card fade-up">
-      <span class="project-tag">Security Awareness</span>
-      <h3>Mastercard Phishing Simulation</h3>
-      <p>Led a phishing simulation for Mastercard employees, delivering comprehensive incident investigation and response training. Emphasized SOC best practices and SIEM utilization in a controlled environment.</p>
-      <div class="project-metric">&#8593; 40% improvement in phishing awareness &nbsp;·&nbsp; Forage</div>
-    </div>
-    <div class="project-card fade-up">
-      <span class="project-tag">Business Intelligence</span>
-      <h3>Municipal Budget Optimization</h3>
-      <p>Developed 20 financial models for Bekwai Municipal Assembly, improving budget accuracy by 30% and supporting GHS 4M in annual revenue forecasts with 5 interactive Power BI dashboards.</p>
-      <div class="project-metric">&#8593; 30% budget accuracy &nbsp;·&nbsp; 40% faster decisions</div>
-    </div>
-    <div class="project-card fade-up">
+    <div class="lab-card fade-up">
       <span class="project-tag">Survey Analytics</span>
-      <h3>National Business Establishment Survey</h3>
-      <p>Ensured complete coverage of 288 Enumeration Zones and all 13,050 businesses. Mentored 188 field personnel and used STATA to achieve a 100% data quality success rate.</p>
-      <div class="project-metric">&#8593; 100% coverage &nbsp;·&nbsp; 50% error reduction</div>
+      <h4>National Business Establishment Survey</h4>
+      <p>Ensured complete coverage of 288 Enumeration Zones and 13,050 businesses; mentored 188 field personnel and used STATA to reach a 100% data quality success rate.</p>
+    </div>
+    <div class="lab-card fade-up">
+      <span class="project-tag">Business Intelligence</span>
+      <h4>Municipal Budget Optimization</h4>
+      <p>20 financial models for Bekwai Municipal Assembly, improving budget accuracy by 30% across GHS 4M in annual revenue forecasts via 5 interactive Power BI dashboards.</p>
     </div>
   </div>
 </section>
@@ -1010,19 +1165,23 @@ footer {
   <div class="contact-layout">
     <div class="contact-info fade-up">
       <h3>Ready to turn your data into decisions?</h3>
-      <p>Whether you need a dashboard, a full data analysis, or a cybersecurity assessment — I'm here to help.</p>
+      <p>Whether you need a full-stack build, an AI-powered product, or a data &amp; security-minded engineer on your team — I'm here to help.</p>
       <div class="contact-links">
         <a href="mailto:beatrice.baah3@hotmail.com" class="contact-link-item">
           <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
           beatrice.baah3@hotmail.com
         </a>
-        <a href="https://wa.me/233245989981" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-          +233 24 598 9981 (WhatsApp)
+        <a href="https://github.com/Beatbaah" class="contact-link-item" target="_blank" rel="noopener">
+          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.41-.01 2.74 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg></span>
+          github.com/Beatbaah
         </a>
         <a href="https://www.linkedin.com/in/bbaah2/" class="contact-link-item" target="_blank" rel="noopener">
           <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
           linkedin.com/in/bbaah2
+        </a>
+        <a href="https://wa.me/233245989981" class="contact-link-item" target="_blank" rel="noopener">
+          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          +233 24 598 9981 (WhatsApp)
         </a>
         <a href="https://x.com/larahvega" class="contact-link-item" target="_blank" rel="noopener">
           <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></span>
@@ -1054,6 +1213,7 @@ footer {
   <div class="footer-name">Beatrice Baah</div>
   <div class="footer-copy">&copy; 2025 Beatrice Baah. All rights reserved.</div>
   <div class="social-row">
+    <a href="https://github.com/Beatbaah" class="social-link" target="_blank" title="GitHub"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.41-.01 2.74 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
     <a href="https://www.linkedin.com/in/bbaah2/" class="social-link" target="_blank" title="LinkedIn"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
     <a href="https://x.com/larahvega" class="social-link" target="_blank" title="X"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
     <a href="https://instagram.com/la_rah_ve_ga" class="social-link" target="_blank" title="Instagram"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
