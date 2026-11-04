@@ -4,6 +4,21 @@ import { initEffects } from './effects.js';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Always open at the top: no scroll restore, no jumping to an old #section in the address.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+scrollTo(0, 0);
+// In-page links scroll (and move focus) without writing #section into the address.
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  const t = a && document.getElementById(a.getAttribute('href').slice(1));
+  if (!t) return;
+  e.preventDefault();
+  t.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+  if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+  t.focus({ preventScroll: true });
+});
+
 const term = document.querySelector('[data-terminal]');
 if (term) mountTerminal(term, DATA, { autotype: !reducedMotion, reducedMotion });
 initEffects({ reducedMotion });
