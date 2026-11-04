@@ -253,21 +253,20 @@ code { font-family: var(--mono); color: var(--accent); }
 .q-role { display: block; font: 400 12px var(--mono); color: var(--muted); }
 
 /* Contact panel */
-.contact-panel { position: relative; border: 1px solid var(--border-strong); border-radius: 14px; overflow: hidden;
-  background: radial-gradient(900px 420px at 85% 0%, #c6f36b10, transparent 60%), #0f1211; box-shadow: 0 40px 90px -50px #000; }
+.contact-panel { position: relative; border: 1px solid var(--border-strong); border-radius: 14px; overflow: hidden; isolation: isolate;
+  background: radial-gradient(900px 600px at 78% 30%, #c6f36b14, transparent 65%), #0f1211; box-shadow: 0 40px 90px -50px #000; }
 .cp-top { display: grid; gap: 8px 32px; padding: clamp(24px, 4vw, 48px) clamp(20px, 4vw, 48px) 8px; align-items: center; }
-@media (min-width: 900px) { .cp-top { grid-template-columns: 1fr 380px; } }
+/* the globe is the panel's background */
+.contact-panel > .globe-slot { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.contact-panel > .globe-slot canvas { width: 100%; height: 100%; display: block; }
+.contact-panel > :not(.globe-slot) { position: relative; z-index: 1; }
+.cp-top { min-height: clamp(300px, 34vw, 400px); align-content: center; }
+.cp-grid .contact-col { background: #0f1211b3; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .cp-intro h2 { margin: 0 0 18px; font-size: clamp(34px, 5.4vw, 60px); max-width: none; }
 .cp-intro .label { margin-bottom: 16px; }
 .cp-where { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; font: 400 13px var(--mono); }
 .cp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .btn-copy.is-copied { border-color: var(--accent); color: var(--accent); }
-.globe-wrap { position: relative; justify-self: center; width: min(100%, 320px); }
-.globe-wrap::before { content: ''; position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(closest-side, #c6f36b22, transparent 70%); filter: blur(8px); }
-@media (min-width: 900px) { .globe-wrap { width: 380px; margin: -20px -10px -30px 0; } }
-.globe-slot { position: relative; width: 100%; aspect-ratio: 1; }
-.globe-slot canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
-.globe-slot canvas:active { cursor: grabbing; }
 .cp-grid { display: grid; border-top: 1px solid var(--border); }
 @media (min-width: 900px) { .cp-grid { grid-template-columns: 1fr 1.4fr; } .cp-grid .contact-col + .contact-col { border-left: 1px solid var(--border); } }
 .contact-col { display: flex; flex-direction: column; gap: 16px; padding: clamp(22px, 3.5vw, 40px); }

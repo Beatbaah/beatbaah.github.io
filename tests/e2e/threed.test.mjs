@@ -85,7 +85,31 @@ test('no globe slot shown without JS', () => withPage({ javaScriptEnabled: false
   assert.equal(await page.locator('#contact .globe-slot').isVisible(), false);
 }));
 
-test('globe drag does not block page scroll on touch', () => withPage({ width: 375, hasTouch: true }, async (page) => {
+test('globe is the background of the whole contact panel', () => withPage({}, async (page) => {
   await page.locator('#contact').scrollIntoViewIfNeeded();
-  assert.equal(await page.locator('#contact .globe-slot canvas').evaluate(e => getComputedStyle(e).touchAction), 'pan-y');
+  const [panel, slot] = await page.evaluate(() => {
+    const p = document.querySelector('.contact-panel'), r = document.querySelector('#contact .globe-slot').getBoundingClientRect();
+    return [[p.clientWidth, p.clientHeight], [Math.round(r.width), Math.round(r.height)]]; // inside the panel's border
+  });
+  assert.deepEqual(slot, panel, 'slot fills the panel');
+  assert.equal(await page.locator('#contact .globe-slot').evaluate(e => getComputedStyle(e).pointerEvents), 'none');
+}));
+
+test('content above the globe stays clickable', () => withPage({}, async (page) => {
+  for (const sel of ['.cp-actions a[href^="mailto:"]', '#contact-name', '#contact-form button[type=submit]']) {
+    const el = page.locator(`#contact ${sel}`);
+    await el.scrollIntoViewIfNeeded();
+    const b = await el.boundingBox();
+    const hit = await page.evaluate(([x, y, s]) => document.elementFromPoint(x, y)?.closest(s) !== null, [b.x + b.width / 2, b.y + b.height / 2, `#contact ${sel}`]);
+    assert.ok(hit, sel);
+  }
+}));
+
+test('globe turns toward the cursor across the panel', () => withPage({}, async (page) => {
+  await page.locator('#contact').scrollIntoViewIfNeeded();
+  const b = await page.locator('.contact-panel').boundingBox();
+  await page.mouse.move(b.x + b.width * 0.9, b.y + 100);
+  await page.waitForTimeout(150);
+  const steer = await page.locator('#contact .globe-slot canvas').getAttribute('data-steer');
+  assert.ok(Number(steer) > 0, `steer=${steer}`);
 }));
