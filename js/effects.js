@@ -64,40 +64,6 @@ function initSpotlight() {
   });
 }
 
-function initCarousel(reducedMotion) {
-  const root = document.querySelector('[data-carousel]');
-  if (!root) return;
-  const slides = [...root.querySelectorAll('.slide')];
-  const count = root.querySelector('.carousel-count');
-  let i = 0, hovering = false, focused = false, stopped = reducedMotion;
-  const toggle = root.querySelector('[data-action="toggle"]');
-  const show = (n) => {
-    i = (n + slides.length) % slides.length;
-    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
-    if (count) count.textContent = `${i + 1} / ${slides.length}`;
-  };
-  root.classList.add('is-enhanced');
-  root.querySelector('.carousel-controls').hidden = false;
-  const setStopped = (v) => {
-    stopped = v;
-    toggle.setAttribute('aria-pressed', String(v));
-    toggle.setAttribute('aria-label', v ? 'Play testimonials' : 'Pause testimonials');
-    toggle.textContent = v ? '▶' : '❚❚';
-  };
-  root.addEventListener('click', (e) => {
-    if (e.target.closest('[data-action="toggle"]')) { setStopped(!stopped); return; }
-    const b = e.target.closest('button[data-dir]');
-    if (b) show(i + (b.dataset.dir === 'next' ? 1 : -1));
-  });
-  root.addEventListener('pointerenter', () => { hovering = true; });
-  root.addEventListener('pointerleave', () => { hovering = false; });
-  root.addEventListener('focusin', () => { focused = true; });
-  root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) focused = false; });
-  setStopped(stopped);
-  show(0);
-  setInterval(() => { if (!stopped && !hovering && !focused && !document.hidden) show(i + 1); }, 6000);
-}
-
 const finePointer = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /** Primary buttons lean toward a nearby mouse cursor. */
@@ -280,7 +246,6 @@ function initGlobe(reducedMotion) {
 export function initEffects({ reducedMotion }) {
   initProgress();
   initSpotlight();
-  initCarousel(reducedMotion);
   initGlobe(reducedMotion);
   if (reducedMotion) return; // content stays fully visible; no scramble, no slide-in, no live effects
   document.documentElement.classList.add('fx');

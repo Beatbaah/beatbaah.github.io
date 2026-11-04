@@ -21,7 +21,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
@@ -272,63 +272,69 @@
 <!-- ───────── TESTIMONIALS ───────── -->
 <section id="testimonials" class="section">
   <p class="label" data-reveal>// what people say</p>
-  <h2 class="visually-hidden">Testimonials</h2>
-  <div class="carousel" data-carousel data-reveal>
-    <div class="slides">
-      <figure class="slide">
+  <h2 data-decrypt data-reveal>Trusted with the numbers that matter</h2>
+  <div class="quotes">
+      <figure class="quote" data-reveal>
+        <span class="q-mark" aria-hidden="true">“</span>
         <blockquote>Beatrice delivered an exceptional dashboard that transformed how our team interprets municipal data. Her ability to translate complex data into actionable insights is outstanding.</blockquote>
-        <figcaption><strong>K. Asante</strong> · Department Head, Bekwai Municipal Assembly</figcaption>
+        <figcaption><span class="q-avatar" aria-hidden="true">KA</span><span><strong>K. Asante</strong><span class="q-role">Department Head, Bekwai Municipal Assembly</span></span></figcaption>
       </figure>
-      <figure class="slide">
+      <figure class="quote" data-reveal>
+        <span class="q-mark" aria-hidden="true">“</span>
         <blockquote>Her data quality monitoring was impeccable. She trained our entire team and ensured zero errors in the final dataset. A true professional with remarkable statistical expertise.</blockquote>
-        <figcaption><strong>E. Acheampong</strong> · District Manager, Ghana Statistical Service</figcaption>
+        <figcaption><span class="q-avatar" aria-hidden="true">EA</span><span><strong>E. Acheampong</strong><span class="q-role">District Manager, Ghana Statistical Service</span></span></figcaption>
       </figure>
-      <figure class="slide">
+      <figure class="quote" data-reveal>
+        <span class="q-mark" aria-hidden="true">“</span>
         <blockquote>Beatrice brings a unique combination of statistical rigor and cybersecurity awareness. She doesn't just analyze data, she protects it. I'd recommend her without hesitation.</blockquote>
-        <figcaption><strong>M. Owusu</strong> · Senior Statistician, Local Government Service</figcaption>
+        <figcaption><span class="q-avatar" aria-hidden="true">MO</span><span><strong>M. Owusu</strong><span class="q-role">Senior Statistician, Local Government Service</span></span></figcaption>
       </figure>
-    </div>
-    <div class="carousel-controls" hidden>
-      <button type="button" data-dir="prev" aria-label="Previous testimonial">←</button>
-      <span class="carousel-count">1 / 3</span>
-      <button type="button" data-dir="next" aria-label="Next testimonial">→</button>
-      <button type="button" class="carousel-toggle" data-action="toggle" aria-pressed="false" aria-label="Pause testimonials">❚❚</button>
-    </div>
   </div>
 </section>
 
 <!-- ───────── CONTACT ───────── -->
 <section id="contact" class="section">
-  <div class="contact-head">
-    <div>
-      <p class="label" data-reveal>// contact</p>
-      <h2 data-decrypt data-reveal>Let's build something</h2>
-      <p class="contact-where" data-reveal><span class="accent">●</span> based in Ghana · working with teams anywhere</p>
+  <div class="contact-panel" data-reveal>
+    <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><p>contact</p></div>
+    <div class="cp-top">
+      <div class="cp-intro">
+        <p class="label">// contact</p>
+        <h2 data-decrypt>Let's build something</h2>
+        <p class="cp-where"><span class="pill"><span class="dot" aria-hidden="true"></span>open to roles &amp; projects</span><span class="muted">based in Ghana · working with teams anywhere</span></p>
+        <div class="cp-actions">
+          <a class="btn btn-primary" href="mailto:beatrice.baah3@hotmail.com">Email me</a>
+          <button type="button" class="btn btn-ghost btn-copy" data-copy="beatrice.baah3@hotmail.com" hidden><span class="roll"><span class="copy-label">Copy email</span><span class="copy-label" aria-hidden="true">Copy email</span></span></button>
+          <a class="btn btn-ghost" href="https://wa.me/233245989981" target="_blank" rel="noopener"><span class="roll"><span>WhatsApp</span><span aria-hidden="true">WhatsApp</span></span><span class="arr" aria-hidden="true">↗</span></a>
+          <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download><span class="roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span><span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="globe-wrap"><div class="globe-slot" aria-hidden="true" hidden></div></div>
     </div>
-    <div class="globe-slot" aria-hidden="true" hidden></div>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-col" data-reveal>
-      <h3>Hiring?</h3>
-      <p>I'm open to software and AI engineering roles, remote or in Ghana. My CV has the full detail.</p>
-      <ul class="contact-links">
-        <li><span class="muted">email</span><a href="mailto:beatrice.baah3@hotmail.com">beatrice.baah3@hotmail.com</a></li>
-        <li><span class="muted">linkedin</span><a href="https://linkedin.com/in/bbaah2" target="_blank" rel="noopener">linkedin.com/in/bbaah2</a></li>
-        <li><span class="muted">github</span><a href="https://github.com/Beatbaah" target="_blank" rel="noopener">github.com/Beatbaah</a></li>
-      </ul>
-      <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download><span class="roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span><span class="arr" aria-hidden="true">↓</span></a>
-    </div>
-    <div class="contact-col" data-reveal>
-      <h3>Have a project?</h3>
-      <p>Tell me what you need. The form opens your email app with everything filled in. Prefer chat? <a href="https://wa.me/233245989981" target="_blank" rel="noopener">Message me on WhatsApp</a>.</p>
-      <form class="contact-form" id="contact-form" action="mailto:beatrice.baah3@hotmail.com" method="post" enctype="text/plain">
-        <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="contact-service">What do you need?</label><input id="contact-service" name="service" placeholder="e.g. a booking site, a dashboard, an AI feature"></div>
-        <div class="field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="4" required></textarea></div>
-        <button type="submit" class="btn btn-primary">Send message →</button>
-        <p class="form-note" id="form-success" hidden>✓ Your email app is opening with this filled in. Hit send there to reach me.</p>
-      </form>
+
+    <div class="cp-grid">
+      <div class="contact-col">
+        <p class="cp-kicker"><span class="accent">01</span> hiring?</p>
+        <p>I'm open to software and AI engineering roles, remote or in Ghana. My CV has the full detail.</p>
+        <ul class="contact-links">
+          <li><span class="muted">email</span><a href="mailto:beatrice.baah3@hotmail.com">beatrice.baah3@hotmail.com</a></li>
+          <li><span class="muted">linkedin</span><a href="https://linkedin.com/in/bbaah2" target="_blank" rel="noopener">linkedin.com/in/bbaah2</a></li>
+          <li><span class="muted">github</span><a href="https://github.com/Beatbaah" target="_blank" rel="noopener">github.com/Beatbaah</a></li>
+        </ul>
+      </div>
+      <div class="contact-col">
+        <p class="cp-kicker"><span class="accent">02</span> have a project?</p>
+        <p>Tell me what you need. The form opens your email app with everything filled in.</p>
+        <form class="contact-form" id="contact-form" action="mailto:beatrice.baah3@hotmail.com" method="post" enctype="text/plain">
+          <div class="field-row">
+            <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="field"><label for="contact-service">What do you need?</label><input id="contact-service" name="service" placeholder="e.g. a booking site, a dashboard, an AI feature"></div>
+          <div class="field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="4" required></textarea></div>
+          <button type="submit" class="btn btn-primary">Send message →</button>
+          <p class="form-note" id="form-success" hidden>✓ Your email app should open with this filled in. If it doesn't, email beatrice.baah3@hotmail.com.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -338,6 +344,6 @@
   <p><span class="accent">~/</span>beatrice · © 2026 Beatrice Baah</p>
   <p class="muted">psst: type <code>help</code> in the terminal up top.</p>
 </footer>
-<script type="module" src="js/main.js?v=5"></script>
+<script type="module" src="js/main.js?v=6"></script>
 </body>
 </html>

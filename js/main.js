@@ -23,6 +23,19 @@ const term = document.querySelector('[data-terminal]');
 if (term) mountTerminal(term, DATA, { autotype: !reducedMotion, reducedMotion });
 initEffects({ reducedMotion });
 
+// Copy-email button (shown only when the clipboard is available).
+document.querySelectorAll('[data-copy]').forEach((btn) => {
+  if (!navigator.clipboard) return;
+  btn.hidden = false;
+  const labels = btn.querySelectorAll('.copy-label');
+  const say = (t) => labels.forEach(l => { l.textContent = t; });
+  btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(btn.dataset.copy); } catch { return; }
+    say('Copied ✓'); btn.classList.add('is-copied');
+    setTimeout(() => { say('Copy email'); btn.classList.remove('is-copied'); }, 2000);
+  });
+});
+
 // Contact form: open the visitor's email app with a pre-filled subject and body.
 const form = document.getElementById('contact-form');
 form?.addEventListener('submit', (e) => {

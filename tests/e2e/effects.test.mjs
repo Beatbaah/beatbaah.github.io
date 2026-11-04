@@ -68,71 +68,11 @@ test('spotlight sets cursor position on cards', () => withPage({}, async (page) 
   assert.equal(await card.evaluate(e => e.style.getPropertyValue('--x')), '30px');
 }));
 
-test('carousel next advances', () => withPage({}, async (page) => {
-  await page.locator('#testimonials').scrollIntoViewIfNeeded();
-  const idx = () => page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active')));
-  assert.equal(await idx(), 0);
-  await page.click('button[data-dir="next"]');
-  assert.equal(await idx(), 1);
-  await page.click('button[data-dir="prev"]');
-  await page.click('button[data-dir="prev"]');
-  assert.equal(await idx(), 2, 'wraps around');
-}));
-
-test('carousel stacks all slides on phones', () => withPage({ width: 375 }, async (page) => {
-  await scrollThrough(page);
-  await page.waitForTimeout(900);
-  const vis = await page.$$eval('.slide', s => s.map(x => getComputedStyle(x).visibility));
-  assert.deepEqual(vis, ['visible', 'visible', 'visible']);
-}));
-
-test('reduced motion: no scramble, nothing hidden, no auto-advance', () => withPage({ reducedMotion: 'reduce' }, async (page) => {
+test('reduced motion: no scramble, nothing hidden', () => withPage({ reducedMotion: 'reduce' }, async (page) => {
   assert.equal(await page.locator('h1 [data-decrypt]').textContent(), 'Beatrice Baah');
   assert.doesNotMatch(await page.getAttribute('html', 'class') ?? '', /\bfx\b/);
   await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
   const ops = await page.$$eval('[data-reveal]', els => els.map(e => getComputedStyle(e).opacity));
   assert.ok(ops.every(o => o === '1'));
-  await page.waitForTimeout(7000);
-  assert.equal(await page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active'))), 0);
 }));
 
-test('carousel count is not a live region', () => withPage({}, async (page) => {
-  assert.equal(await page.locator('.carousel-count').getAttribute('aria-live'), null);
-}));
-
-test('carousel has a pause button that stops autoplay', async () => {
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-  try {
-    await page.clock.install();
-    await page.goto(server.url);
-    const idx = () => page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active')));
-    await page.clock.runFor(6500);
-    assert.equal(await idx(), 1, 'autoplay advances');
-    const btn = page.locator('button[data-action="toggle"]');
-    await btn.click();
-    assert.equal(await btn.getAttribute('aria-pressed'), 'true');
-    await page.mouse.move(5, 5); // leave the carousel
-    await page.clock.runFor(20000);
-    assert.equal(await idx(), 1, 'stays paused');
-  } finally { await browser.close(); }
-});
-
-test('carousel stays paused while keyboard focus is inside', async () => {
-  const { chromium } = await import('playwright');
-  const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-  try {
-    await page.clock.install();
-    await page.goto(server.url);
-    await page.focus('button[data-dir="next"]');
-    await page.keyboard.press('Enter');
-    await page.locator('#testimonials').hover();
-    await page.mouse.move(5, 5);
-    const idx = () => page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active')));
-    const before = await idx();
-    await page.clock.runFor(13000);
-    assert.equal(await idx(), before);
-  } finally { await browser.close(); }
-});
