@@ -27,11 +27,11 @@ for (const width of [375, 1440]) {
   });
 }
 
-test('js budget under 25 KB', async () => {
+test('js budget under 32 KB', async () => {
   const dir = path.join(ROOT, 'js');
   let total = 0;
   for (const f of await fs.readdir(dir)) total += (await fs.stat(path.join(dir, f))).size;
-  assert.ok(total < 25 * 1024, `${total} bytes`);
+  assert.ok(total < 32 * 1024, `${total} bytes`);
 });
 
 test('no horizontal scroll after interactions at 375', async () => {

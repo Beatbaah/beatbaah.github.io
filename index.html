@@ -52,7 +52,7 @@
       <p class="pitch">I build full-stack apps and AI products, shaped by years of statistics and data-quality work in Ghana's public sector and an MSc in Cybersecurity. I ship products, then make sure they hold up.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#work">View work</a>
-        <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download>Download CV</a>
+        <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download><span class="roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span><span class="arr" aria-hidden="true">↓</span></a>
         <a class="text-link" href="#contact">Have a project? →</a>
       </div>
       <dl class="stats">
@@ -77,6 +77,8 @@
     </div>
   </div>
 </section>
+
+<div class="ticker" role="region" aria-label="Highlights"><div class="ticker-track"><ul class="ticker-group"><li>shipping amansie ride: rider, driver &amp; ops console</li><li>101/103 adversarial patches caught</li><li>mySOC: detections mapped to MITRE ATT&amp;CK</li><li>bma site: 3.7 MB → 75 KB</li><li>msc cybersecurity &amp; digital forensics</li><li>open to roles &amp; projects</li></ul><ul class="ticker-group" aria-hidden="true"><li>shipping amansie ride: rider, driver &amp; ops console</li><li>101/103 adversarial patches caught</li><li>mySOC: detections mapped to MITRE ATT&amp;CK</li><li>bma site: 3.7 MB → 75 KB</li><li>msc cybersecurity &amp; digital forensics</li><li>open to roles &amp; projects</li></ul></div></div>
 
 <!-- ───────── WORK ───────── -->
 <section id="work" class="section">
@@ -238,26 +240,24 @@
     </details>
   </div>
 
-  <div class="edu-certs">
-    <div data-reveal>
-      <h3>Education</h3>
-      <ul class="plain">
-        <li><span>MSc Cybersecurity &amp; Digital Forensics</span><span class="muted">KNUST · 2026</span></li>
-        <li><span>BSc Statistics</span><span class="muted">KNUST</span></li>
-      </ul>
-    </div>
-    <div data-reveal>
-      <h3>Certifications</h3>
-      <ul class="plain">
-        <li><span>Certified Cybersecurity Educator Professional (CCEP)</span><span class="muted">2025</span></li>
-        <li><span>Google Cybersecurity Certificate</span><span class="muted">Google · 2024</span></li>
-        <li><span>Respond &amp; Mitigate Security Threats</span><span class="muted">IBM · 2024</span></li>
-        <li><span>Mastercard Cybersecurity Job Simulation</span><span class="muted">Forage · 2024</span></li>
-        <li><span>SQL Fundamentals</span><span class="muted">Dataquest.io · 2023</span></li>
-        <li><span>Power BI in Data Analytics</span><span class="muted">Forage · 2022</span></li>
-        <li><span>Python Programming Foundations</span><span class="muted">Udacity · 2022</span></li>
-        <li><span>Excel Fundamentals: Formulas for Finance</span><span class="muted">CFI · 2022</span></li>
-      </ul>
+  <div class="creds" id="credentials" data-reveal>
+    <h3 class="visually-hidden">Education and certifications</h3>
+    <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><p>credentials</p></div>
+    <div class="creds-body">
+      <p class="cred-cmd"><span class="accent">$</span> verify --credentials</p>
+      <p class="cred-group"># degrees</p>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">MSc Cybersecurity &amp; Digital Forensics</span><span class="cred-meta">KNUST · 2026 · <a href="#project-ghana-card-patch-detection">thesis ↗</a></span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">BSc Statistics</span><span class="cred-meta">KNUST</span></div>
+      <p class="cred-group"># certifications</p>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Certified Cybersecurity Educator Professional (CCEP)</span><span class="cred-meta">2025</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Google Cybersecurity Certificate</span><span class="cred-meta">Google · 2024</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Respond &amp; Mitigate Security Threats</span><span class="cred-meta">IBM · 2024</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Mastercard Cybersecurity Job Simulation</span><span class="cred-meta">Forage · 2024</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">SQL Fundamentals</span><span class="cred-meta">Dataquest.io · 2023</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Power BI in Data Analytics</span><span class="cred-meta">Forage · 2022</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Python Programming Foundations</span><span class="cred-meta">Udacity · 2022</span></div>
+      <div class="cred-row"><span class="cred-mark" aria-hidden="true">✓</span><span class="cred-name">Excel Fundamentals: Formulas for Finance</span><span class="cred-meta">CFI · 2022</span></div>
+      <p class="cred-summary"><span class="cred-status accent">10/10 verified</span><button type="button" class="cred-rerun" data-action="rerun" hidden>↻ re-run</button></p>
     </div>
   </div>
 </section>
@@ -303,7 +303,7 @@
         <li><span class="muted">linkedin</span><a href="https://linkedin.com/in/bbaah2" target="_blank" rel="noopener">linkedin.com/in/bbaah2</a></li>
         <li><span class="muted">github</span><a href="https://github.com/Beatbaah" target="_blank" rel="noopener">github.com/Beatbaah</a></li>
       </ul>
-      <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download>Download CV</a>
+      <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download><span class="roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span><span class="arr" aria-hidden="true">↓</span></a>
     </div>
     <div class="contact-col" data-reveal>
       <h3>Have a project?</h3>
