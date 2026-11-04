@@ -98,8 +98,8 @@ test('clear empties output', () => withPage({}, async (page) => {
   assert.equal((await out(page)).trim(), '');
 }));
 
-test('contact form opens a prefilled mailto', () => withPage({}, async (page) => {
-  await page.evaluate(() => { window.__mailto = null; });
+test('contact form opens a prefilled mailto when sending fails', () => withPage({}, async (page) => {
+  await page.route('https://formsubmit.co/**', r => r.abort());
   await page.route('mailto:*', r => r.abort());
   await page.fill('#contact-name', 'Ama Mensah');
   await page.fill('#contact-email', 'ama@example.com');

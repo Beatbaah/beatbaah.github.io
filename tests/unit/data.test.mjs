@@ -36,7 +36,7 @@ test('contact has no instagram/tiktok', () => {
 
 test('amansie copy is area-neutral', () => {
   const a = DATA.featured.find(p => p.slug === 'amansie-ride');
-  assert.doesNotMatch(`${a.tagline} ${a.built}`, /bekwai/i);
+  assert.doesNotMatch(a.tagline, /bekwai/i);
 });
 
 test('cv path points at the bundled PDF', () => {

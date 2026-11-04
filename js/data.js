@@ -14,16 +14,15 @@ export const DATA = {
   },
 
   stats: [
-    { value: '8+', label: 'products shipped' },
+    { value: '10', label: 'products built' },
     { value: '5+', label: 'years in data & government' },
-    { value: '50+', label: 'people using my dashboards' },
+    { value: '50+', label: 'dashboard users' },
   ],
 
   featured: [
     {
       slug: 'proassess', title: 'ProAssess',
       tagline: 'AI hiring assessment platform',
-      built: 'Recruiters invite candidates, candidates take four timed reasoning tests, and Gemini writes a score summary the moment they submit. Side-by-side shortlisting and GDPR-compliant data erasure.',
       stack: ['react', 'typescript', 'firebase', 'gemini'],
       links: { code: 'https://github.com/Beatbaah/ProAssess' },
       image: 'assets/projects/proassess.webp',
@@ -31,7 +30,6 @@ export const DATA = {
     {
       slug: 'amansie-ride', title: 'Amansie Ride',
       tagline: 'Ride-hailing for the districts the big apps don\'t serve',
-      built: 'Three apps and a backend: a rider app, a driver app and an operations console, with live dispatch, trip lifecycle, cash and Mobile Money records, zone-based fares and ratings, all on Firestore listeners and Cloud Functions.',
       stack: ['react native', 'expo', 'firebase', 'cloud functions', 'react'],
       links: {},
       image: 'assets/projects/amansie-ride.webp',
@@ -39,15 +37,13 @@ export const DATA = {
     {
       slug: 'mysoc', title: 'mySOC',
       tagline: 'Network security monitoring & incident response console',
-      built: 'A sensor turns traffic and device logs into flows, runs detections mapped to MITRE ATT&CK, and folds them into a deduplicated, risk-scored alert queue. Analysts triage, open cases, hunt and hand over between shifts.',
       stack: ['python', 'fastapi', 'postgresql', 'react', 'mitre att&ck'],
       links: { code: 'https://github.com/Beatbaah/mySOC' },
       image: 'assets/projects/mysoc.webp',
     },
     {
       slug: 'bma-website', title: 'BMA website',
-      tagline: 'Redesign of the Bekwai Municipal Assembly website',
-      built: 'Replaced an end-of-life Drupal site served over plain HTTP with fast static pages: HTTPS-only with a strict CSP, ~75 KB to first view (down from 3.7 MB), and organised around what residents come to do.',
+      tagline: 'Proposed redesign of the Bekwai Municipal Assembly website',
       stack: ['astro', 'typescript', 'static', 'security headers'],
       links: {},
       image: 'assets/projects/bma-website.webp',
@@ -55,7 +51,6 @@ export const DATA = {
     {
       slug: 'ghana-card-patch-detection', title: 'Ghana Card patch detection',
       tagline: 'MSc thesis (KNUST): a TensorFlow/Keras CNN that flags adversarial patches on Ghana Card-style face photos',
-      built: 'A CNN (TensorFlow/Keras) that classifies Ghana Card-style face photos as clean or carrying an adversarial patch (\u201cspot evasion\u201d attack). Built for my MSc thesis at KNUST, with a discussion of how such detectors hold up against attackers who adapt to them.',
       stack: ['python', 'tensorflow', 'keras', 'cnn', 'adversarial ml'],
       links: { code: 'https://github.com/Beatbaah/ghana-card-patch-detection' },
     },
@@ -78,7 +73,7 @@ export const DATA = {
       slug: 'excellent-susu', title: 'Excellent Susu',
       tagline: 'Savings-group management: contributions, payouts and an audit trail',
       stack: ['react', 'firebase', 'rbac'],
-      links: { code: 'https://github.com/Beatbaah/susu-management-app' },
+      links: { live: 'https://excellent-susu-app.web.app', code: 'https://github.com/Beatbaah/susu-management-app' },
     },
     {
       slug: 'tax-system', title: 'Bekwai Tax Revenue',

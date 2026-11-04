@@ -38,12 +38,39 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
 
 // Contact form: open the visitor's email app with a pre-filled subject and body.
 const form = document.getElementById('contact-form');
-form?.addEventListener('submit', (e) => {
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   const v = (name) => form.elements[name].value.trim();
   const service = v('service');
   const subject = `Portfolio inquiry${service ? ': ' + service : ''}`;
-  const body = `Name: ${v('name')}\nEmail: ${v('email')}\n${service ? `Service needed: ${service}\n` : ''}\n${v('message')}`;
-  document.getElementById('form-success').hidden = false;
-  location.href = `mailto:${DATA.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const note = document.getElementById('form-success');
+  const btn = form.querySelector('[type=submit]');
+  btn.disabled = true;
+  let sent = false;
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${DATA.contact.email}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name: v('name'), email: v('email'), service, message: v('message'), _subject: subject, _honey: v('_honey'), _template: 'table' }),
+    });
+    sent = String((await r.json()).success) === 'true';
+  } catch {}
+  btn.disabled = false;
+  if (sent) {
+    form.reset();
+    note.textContent = "✓ Sent. Thanks, I'll reply within two working days.";
+  } else {
+    const body = `Name: ${v('name')}\nEmail: ${v('email')}\n${service ? `Service needed: ${service}\n` : ''}\n${v('message')}`;
+    note.textContent = `Couldn't send from here, so your email app should open instead. If it doesn't, email ${DATA.contact.email}.`;
+    location.href = `mailto:${DATA.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+  note.hidden = false;
 });
+
+// Analytics: off until a GoatCounter code is set in <meta name="goatcounter">.
+const gc = document.querySelector('meta[name=goatcounter]')?.content;
+if (gc) {
+  const t = document.createElement('script');
+  t.async = true; t.src = 'https://gc.zgo.at/count.js';
+  t.dataset.goatcounter = `https://${gc}.goatcounter.com/count`;
+  document.head.append(t);
+}
