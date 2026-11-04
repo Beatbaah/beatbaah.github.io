@@ -48,6 +48,7 @@ export async function openPage(url, opts = {}) {
     isMobile: opts.hasTouch ?? false,
   });
   const page = await context.newPage();
+  page.setDefaultTimeout(5000);
   await page.goto(url, { waitUntil: 'load' });
   return { page, browser };
 }
