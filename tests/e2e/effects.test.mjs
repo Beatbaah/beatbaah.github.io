@@ -14,16 +14,26 @@ const scrollThrough = (page) => page.evaluate(async () => {
   for (let y = 0; y <= document.body.scrollHeight; y += 300) { scrollTo({ top: y, behavior: 'instant' }); await new Promise(r => setTimeout(r, 40)); }
 });
 
-test('hero name scrambles then resolves', () => withPage({}, async (page) => {
-  const seen = await page.evaluate(() => new Promise(res => {
-    const el = document.querySelector('h1 [data-decrypt]'); const texts = new Set();
-    const t = setInterval(() => texts.add(el.textContent), 20);
-    setTimeout(() => { clearInterval(t); res([...texts]); }, 1500);
-  }));
-  assert.ok(seen.length > 1, 'text changed during the effect');
-  assert.equal(await page.locator('h1 [data-decrypt]').textContent(), 'Beatrice Baah');
-  assert.equal(await page.locator('h1 [data-decrypt]').getAttribute('aria-label'), 'Beatrice Baah');
-}));
+test('hero name scrambles then resolves', async () => {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  try {
+    // record every text the hero name shows, from before the module runs
+    await page.addInitScript(() => {
+      window.__seen = new Set();
+      new MutationObserver(() => {
+        const el = document.querySelector('h1 [data-decrypt]');
+        if (el) window.__seen.add(el.textContent);
+      }).observe(document, { subtree: true, childList: true, characterData: true });
+    });
+    await page.goto(server.url);
+    await page.waitForTimeout(1200);
+    assert.ok(await page.evaluate(() => window.__seen.size) > 1, 'text changed during the effect');
+    assert.equal(await page.locator('h1 [data-decrypt]').textContent(), 'Beatrice Baah');
+    assert.equal(await page.locator('h1 [data-decrypt]').getAttribute('aria-label'), 'Beatrice Baah');
+  } finally { await browser.close(); }
+});
 
 test('effects mark the page with html.fx', () => withPage({}, async (page) => {
   assert.match(await page.getAttribute('html', 'class') ?? '', /\bfx\b/);
@@ -85,3 +95,44 @@ test('reduced motion: no scramble, nothing hidden, no auto-advance', () => withP
   await page.waitForTimeout(7000);
   assert.equal(await page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active'))), 0);
 }));
+
+test('carousel count is not a live region', () => withPage({}, async (page) => {
+  assert.equal(await page.locator('.carousel-count').getAttribute('aria-live'), null);
+}));
+
+test('carousel has a pause button that stops autoplay', async () => {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  try {
+    await page.clock.install();
+    await page.goto(server.url);
+    const idx = () => page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active')));
+    await page.clock.runFor(6500);
+    assert.equal(await idx(), 1, 'autoplay advances');
+    const btn = page.locator('button[data-action="toggle"]');
+    await btn.click();
+    assert.equal(await btn.getAttribute('aria-pressed'), 'true');
+    await page.mouse.move(5, 5); // leave the carousel
+    await page.clock.runFor(20000);
+    assert.equal(await idx(), 1, 'stays paused');
+  } finally { await browser.close(); }
+});
+
+test('carousel stays paused while keyboard focus is inside', async () => {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  try {
+    await page.clock.install();
+    await page.goto(server.url);
+    await page.focus('button[data-dir="next"]');
+    await page.keyboard.press('Enter');
+    await page.locator('#testimonials').hover();
+    await page.mouse.move(5, 5);
+    const idx = () => page.$$eval('.slide', s => s.findIndex(x => x.classList.contains('is-active')));
+    const before = await idx();
+    await page.clock.runFor(13000);
+    assert.equal(await idx(), before);
+  } finally { await browser.close(); }
+});

@@ -244,6 +244,7 @@ code { font-family: var(--mono); color: var(--accent); }
 .carousel-controls button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-strong); background: transparent; color: var(--heading); font: inherit; cursor: pointer; }
 .carousel-controls button:hover { border-color: var(--accent); color: var(--accent); }
 .carousel-count { color: var(--muted); }
+.carousel-toggle { margin-left: 8px; font-size: 11px !important; }
 @media (max-width: 639px) { .carousel-controls { display: none !important; } }
 /* JS-enhanced carousel (≥640px): one slide at a time */
 @media (min-width: 640px) {
@@ -271,6 +272,8 @@ code { font-family: var(--mono); color: var(--accent); }
 .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
 .contact-form .btn { justify-self: start; }
 .form-note { color: var(--accent); font: 400 13px var(--mono); }
+
+@media (max-width: 639px), (hover: none) { .term-input, .field input, .field textarea { font-size: 16px; } }
 
 /* Footer */
 .footer { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 96px auto 0; padding: 28px var(--gutter) 40px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font: 400 13px var(--mono); color: var(--body); }

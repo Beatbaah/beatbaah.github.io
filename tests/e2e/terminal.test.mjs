@@ -109,3 +109,42 @@ test('contact form opens a prefilled mailto', () => withPage({}, async (page) =>
   await page.waitForSelector('#form-success:not([hidden])', { timeout: 3000 });
   void nav;
 }));
+
+test('Tab with no completion lets focus leave the terminal', () => withPage({}, async (page) => {
+  await page.locator('.term-input').click();
+  await page.locator('.term-input').fill('xyz');
+  await page.keyboard.press('Tab');
+  assert.notEqual(await page.evaluate(() => document.activeElement.className), 'term-input');
+}));
+
+test('Shift+Tab always leaves the terminal', () => withPage({}, async (page) => {
+  await page.locator('.term-input').click();
+  await page.locator('.term-input').fill('pro');
+  await page.keyboard.press('Shift+Tab');
+  assert.notEqual(await page.evaluate(() => document.activeElement.className), 'term-input');
+}));
+
+test('inputs are at least 16px on phones (no iOS zoom)', () => withPage({ width: 375, hasTouch: true }, async (page) => {
+  const sizes = await page.$$eval('.term-input, .field input, .field textarea', els => els.map(e => parseFloat(getComputedStyle(e).fontSize)));
+  assert.ok(sizes.length >= 5 && sizes.every(s => s >= 16), sizes.join(','));
+}));
+
+test('terminal is quiet for screen readers while the intro types', async () => {
+  const { chromium } = await import('playwright');
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  try {
+    await page.addInitScript(() => {
+      window.__live = [];
+      document.addEventListener('DOMContentLoaded', () => {
+        const o = document.querySelector('.term-output');
+        new MutationObserver(() => window.__live.push(o.getAttribute('aria-live'))).observe(o, { childList: true, subtree: true, characterData: true });
+      });
+    });
+    await page.goto(server.url);
+    await page.waitForFunction(() => document.querySelector('.term-output').innerText.includes("type 'help'"));
+    const during = await page.evaluate(() => window.__live.slice(0, -1));
+    assert.ok(during.length > 0 && during.every(v => v === 'off'), during.join(','));
+    assert.equal(await page.locator('.term-output').getAttribute('aria-live'), 'polite');
+  } finally { await browser.close(); }
+});

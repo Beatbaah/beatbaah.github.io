@@ -59,7 +59,9 @@ export function mountTerminal(root, data, { autotype = true, reducedMotion = fal
   }
 
   let introDone = false;
+  const finishIntro = () => { introDone = true; output.setAttribute('aria-live', 'polite'); };
   async function intro() {
+    output.setAttribute('aria-live', 'off');
     output.replaceChildren();
     if (autotype) {
       const line = renderLine([{ text: '$ ', kind: 'accent' }, { text: '' }]);
@@ -73,7 +75,7 @@ export function mountTerminal(root, data, { autotype = true, reducedMotion = fal
     if (introDone) return;
     execute('whoami', data).lines.forEach(print);
     print([{ text: "type 'help' to explore, or tap a command below.", kind: 'muted' }]);
-    introDone = true;
+    finishIntro();
   }
 
   form.hidden = false;
@@ -82,7 +84,7 @@ export function mountTerminal(root, data, { autotype = true, reducedMotion = fal
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!introDone) { introDone = true; output.replaceChildren(); }
+    if (!introDone) { finishIntro(); output.replaceChildren(); }
     const cmd = input.value;
     input.value = '';
     if (!cmd.trim()) { echo(''); return; }
@@ -93,8 +95,9 @@ export function mountTerminal(root, data, { autotype = true, reducedMotion = fal
     if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
       const v = e.key === 'ArrowUp' ? history.prev() : history.next();
       if (v !== null) { e.preventDefault(); input.value = v; }
-    } else if (e.key === 'Tab' && input.value.trim()) {
+    } else if (e.key === 'Tab' && !e.shiftKey && input.value.trim()) {
       const options = complete(input.value, data);
+      if (!options.length) return; // let Tab move focus on
       e.preventDefault();
       if (options.length === 1) input.value = options[0];
       else if (options.length > 1) { echo(input.value); print([{ text: options.join('   '), kind: 'muted' }]); }
@@ -104,7 +107,7 @@ export function mountTerminal(root, data, { autotype = true, reducedMotion = fal
   chips.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-cmd]');
     if (!btn) return;
-    if (!introDone) { introDone = true; output.replaceChildren(); }
+    if (!introDone) { finishIntro(); output.replaceChildren(); }
     run(btn.dataset.cmd);
   });
 
