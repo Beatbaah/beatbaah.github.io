@@ -161,18 +161,18 @@ code { font-family: var(--mono); color: var(--accent); }
 .work-grid { display: grid; gap: 20px; }
 @media (min-width: 840px) { .work-grid { grid-template-columns: 1fr 1fr; } .feature-wide { grid-column: 1 / -1; } }
 .card {
-  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  position: relative; display: flex; flex-direction: column; transform-style: preserve-3d;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   transition: transform .3s var(--ease), border-color .3s;
 }
 .card::before { /* spotlight, positioned by effects.js via --x/--y */
-  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity .3s;
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2; opacity: 0; transition: opacity .3s;
   background: radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), #c6f36b1f, transparent 60%);
 }
 .card:hover { border-color: #ffffff30; }
 .card:hover::before { opacity: 1; }
 .card.is-highlighted { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 0 50px -10px var(--accent-dim); }
-.card-media { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.card-media { aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; border-bottom: 1px solid var(--border); background: var(--surface-2); }
 .card-media img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .6s var(--ease); }
 .card:hover .card-media img { transform: scale(1.03); }
 .card-body { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 24px; flex: 1; }
@@ -183,7 +183,7 @@ code { font-family: var(--mono); color: var(--accent); }
 .card-body .label { margin-bottom: 0; }
 @media (min-width: 840px) {
   .feature-wide { flex-direction: row; }
-  .feature-wide .card-media { flex: 1.3; aspect-ratio: auto; min-height: 360px; border-bottom: 0; border-right: 1px solid var(--border); }
+  .feature-wide .card-media { border-radius: var(--radius) 0 0 var(--radius); flex: 1.3; aspect-ratio: auto; min-height: 360px; border-bottom: 0; border-right: 1px solid var(--border); }
   .feature-wide .card-body { flex: 1; padding: 32px; justify-content: center; }
 }
 .card-stat { display: grid; place-items: center; padding: 24px;
@@ -339,3 +339,32 @@ html.fx [data-reveal].is-visible { opacity: 1; transform: none; }
 }
 
 @media print { html.fx [data-reveal] { opacity: 1 !important; transform: none !important; } .ticker, .hero-grid-canvas { display: none; } }
+
+/* ── 3D ─────────────────────────────────────────────── */
+.terminal-3d { position: relative; min-width: 0; transform-style: preserve-3d; transition: transform .25s var(--ease); }
+@media (min-width: 960px) { .hero-grid { perspective: 1400px; } }
+.float-chips { position: absolute; inset: 0; pointer-events: none; transform-style: preserve-3d; z-index: 2; }
+.float-chip { position: absolute; display: none; font: 500 11px var(--mono); padding: 6px 10px; border-radius: 7px; white-space: nowrap; box-shadow: 0 14px 30px -10px #000; }
+@media (min-width: 960px) { .float-chip { display: block; } }
+.fc1 { right: -18px; top: 46px; transform: translateZ(70px); background: var(--accent); color: var(--bg); }
+.fc2 { left: -34px; bottom: 90px; transform: translateZ(100px); background: var(--heading); color: var(--bg); }
+.fc3 { right: 36px; bottom: -16px; transform: translateZ(50px); background: var(--surface); color: var(--accent); border: 1px solid #c6f36b55; }
+
+.work-grid { perspective: 1600px; }
+.card.is-tilting { transition: transform .12s ease-out, border-color .3s; }
+.card .card-media, .card h3, .card .chips, .card .card-body > .label { transition: transform .45s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+html.fx .card:hover .card-media { transform: translateZ(28px); }
+html.fx .card:hover h3 { transform: translateZ(48px); }
+html.fx .card:hover .chips { transform: translateZ(36px); }
+html.fx .card:hover .card-body > .label { transform: translateZ(40px); }
+html.fx .card:hover .card-media img { transform: none; }
+}
+
+.contact-head { display: grid; gap: 8px 40px; align-items: center; margin-bottom: 32px; }
+.contact-head h2 { margin-bottom: 12px; }
+.contact-where { font: 400 13px var(--mono); color: var(--muted); }
+.globe-slot { width: min(100%, 300px); aspect-ratio: 1; justify-self: center; }
+@media (min-width: 840px) { .contact-head { grid-template-columns: 1fr 360px; } .globe-slot { width: 360px; } }
+.globe-slot canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+.globe-slot canvas:active { cursor: grabbing; }

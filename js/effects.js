@@ -189,16 +189,106 @@ function initCredentials() {
   io.observe(panel);
 }
 
+/** Hero terminal and featured cards tilt toward the cursor (mouse only). */
+function initTilt() {
+  if (!finePointer()) return;
+  const hero = document.getElementById('hero'), term = hero?.querySelector('.terminal-3d');
+  if (term) {
+    hero.addEventListener('pointermove', (e) => {
+      const r = term.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / r.width));
+      const y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / r.height));
+      term.style.transform = `rotateY(${x * 9}deg) rotateX(${-y * 7}deg)`;
+    });
+    hero.addEventListener('pointerleave', () => { term.style.transform = ''; });
+  }
+  document.querySelectorAll('.work-grid .card').forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      card.classList.add('is-tilting');
+      card.style.transform = `rotateX(${-y * 7}deg) rotateY(${x * 9}deg)`;
+    });
+    card.addEventListener('pointerleave', () => { card.classList.remove('is-tilting'); card.style.transform = ''; });
+  });
+}
+
+/** Dot globe with Ghana pinned and arcs out to the world. Drag to spin; runs only while on screen. */
+function initGlobe(reducedMotion) {
+  const slot = document.querySelector('#contact .globe-slot');
+  if (!slot) return;
+  slot.hidden = false;
+  const cv = document.createElement('canvas');
+  cv.dataset.running = 'false';
+  slot.append(cv);
+  const ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio || 1);
+  const size = () => { cv.width = slot.clientWidth * dpr; cv.height = slot.clientHeight * dpr; };
+  size();
+  const ll = (lat, lon) => { const a = lat * Math.PI / 180, b = -lon * Math.PI / 180; return [Math.cos(a) * Math.cos(b), Math.sin(a), Math.cos(a) * Math.sin(b)]; };
+  const rot = ([x, y, z], ax, ay) => {
+    let c = Math.cos(ay), s = Math.sin(ay); [x, z] = [x * c + z * s, -x * s + z * c];
+    c = Math.cos(ax); s = Math.sin(ax); return [x, y * c - z * s, y * s + z * c];
+  };
+  const arc = (a, b, t) => { const p = a.map((v, i) => v * (1 - t) + b[i] * t), m = Math.hypot(...p), h = 1 + Math.sin(Math.PI * t) * 0.3; return p.map(v => v / m * h); };
+  const dots = Array.from({ length: 800 }, (_, i) => { const y = 1 - 2 * (i + 0.5) / 800, r = Math.sqrt(1 - y * y), th = i * 2.39996; return [Math.cos(th) * r, y, Math.sin(th) * r]; });
+  const home = ll(7.9, -1.0), dests = [ll(51.5, -0.1), ll(40.7, -74), ll(52.5, 13.4), ll(6.5, 3.4), ll(-1.3, 36.8), ll(25.2, 55.3)];
+  let ay = -2.2, ax = 0.2, vy = 0, vx = 0, raf = 0, on = false, drag = null;
+  const draw = (t) => {
+    const W = cv.width, H = cv.height, R = Math.min(W, H) * 0.42, cx = W / 2, cy = H / 2;
+    const P = (p) => { const [x, y, z] = rot(p, ax, ay); return [cx + x * R, cy - y * R, z]; };
+    ctx.clearRect(0, 0, W, H);
+    for (const d of dots) { const [x, y, z] = P(d); if (z > -0.05) { ctx.fillStyle = `rgba(255,255,255,${0.07 + z * 0.33})`; ctx.fillRect(x, y, 1.4 * dpr, 1.4 * dpr); } }
+    ctx.lineWidth = dpr;
+    dests.forEach((d, k) => {
+      ctx.beginPath();
+      let pen = false;
+      for (let i = 0; i <= 32; i++) { const [x, y, z] = P(arc(home, d, i / 32)); if (z < 0) { pen = false; continue; } pen ? ctx.lineTo(x, y) : ctx.moveTo(x, y); pen = true; }
+      ctx.strokeStyle = 'rgba(198,243,107,.35)'; ctx.stroke();
+      const [x, y, z] = P(arc(home, d, (t / 2400 + k / dests.length) % 1));
+      if (z > 0) { ctx.fillStyle = '#c6f36b'; ctx.beginPath(); ctx.arc(x, y, 2.3 * dpr, 0, 7); ctx.fill(); }
+    });
+    const [gx, gy, gz] = P(home);
+    if (gz > 0) {
+      const pulse = (t / 1000) % 1;
+      ctx.strokeStyle = `rgba(198,243,107,${1 - pulse})`; ctx.beginPath(); ctx.arc(gx, gy, (3 + pulse * 14) * dpr, 0, 7); ctx.stroke();
+      ctx.fillStyle = '#c6f36b'; ctx.beginPath(); ctx.arc(gx, gy, 3.5 * dpr, 0, 7); ctx.fill();
+    }
+  };
+  const loop = (t) => {
+    raf = 0;
+    if (!on) return;
+    if (!drag) { vy *= 0.95; vx *= 0.95; }
+    ay += 0.0016 + vy; ax = Math.max(-1, Math.min(1, ax + vx));
+    draw(t);
+    raf = requestAnimationFrame(loop);
+  };
+  draw(0);
+  addEventListener('resize', () => { size(); draw(performance.now()); });
+  if (reducedMotion) return;
+  cv.addEventListener('pointerdown', (e) => { drag = [e.clientX, e.clientY]; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    vy = (e.clientX - drag[0]) * 0.004; vx = (e.clientY - drag[1]) * 0.003; drag = [e.clientX, e.clientY];
+  });
+  cv.addEventListener('pointerup', () => { drag = null; });
+  new IntersectionObserver(([en]) => {
+    on = en.isIntersecting; cv.dataset.running = String(on);
+    if (on && !raf) raf = requestAnimationFrame(loop);
+  }).observe(cv);
+}
+
 export function initEffects({ reducedMotion }) {
   initProgress();
   initSpotlight();
   initCarousel(reducedMotion);
+  initGlobe(reducedMotion);
   if (reducedMotion) return; // content stays fully visible; no scramble, no slide-in, no live effects
   document.documentElement.classList.add('fx');
   initMagnetic();
   initLiveGrid();
   initScanner();
   initCredentials();
+  initTilt();
   const hero = document.querySelector('h1 [data-decrypt]');
   if (hero) decrypt(hero, 700);
   initReveals();
