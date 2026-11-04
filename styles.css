@@ -244,6 +244,7 @@ code { font-family: var(--mono); color: var(--accent); }
 .carousel-controls button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-strong); background: transparent; color: var(--heading); font: inherit; cursor: pointer; }
 .carousel-controls button:hover { border-color: var(--accent); color: var(--accent); }
 .carousel-count { color: var(--muted); }
+@media (max-width: 639px) { .carousel-controls { display: none !important; } }
 /* JS-enhanced carousel (≥640px): one slide at a time */
 @media (min-width: 640px) {
   .carousel.is-enhanced .slides { display: grid; }

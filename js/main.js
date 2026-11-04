@@ -1,10 +1,12 @@
 import { DATA } from './data.js';
 import { mountTerminal } from './terminal-ui.js';
+import { initEffects } from './effects.js';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const term = document.querySelector('[data-terminal]');
 if (term) mountTerminal(term, DATA, { autotype: !reducedMotion, reducedMotion });
+initEffects({ reducedMotion });
 
 // Contact form: open the visitor's email app with a pre-filled subject and body.
 const form = document.getElementById('contact-form');
