@@ -18,7 +18,9 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,7 +45,7 @@
   <div class="hero-grid">
     <div class="hero-copy">
       <div class="status">
-        <img class="avatar" src="assets/beatrice-headshot.webp" width="640" height="854" alt="Beatrice Baah">
+        <img class="avatar" src="assets/beatrice-avatar.webp" width="96" height="128" alt="Beatrice Baah">
         <span class="pill"><span class="dot" aria-hidden="true"></span>open to roles &amp; projects</span>
       </div>
       <h1><span class="name" data-decrypt>Beatrice Baah</span><span class="subline">builds secure, AI&#8209;native software.</span></h1>
@@ -83,7 +85,7 @@
 
   <div class="work-grid">
     <article class="card project feature-wide" id="project-proassess" data-reveal>
-      <div class="card-media"><img src="assets/projects/proassess.webp" width="1200" height="686" loading="lazy" alt="ProAssess dashboard screenshot"></div>
+      <div class="card-media"><img src="assets/projects/proassess.webp" srcset="assets/projects/proassess-800.webp 800w, assets/projects/proassess.webp 1200w" sizes="(min-width: 840px) 700px, 100vw" width="1200" height="686" loading="lazy" alt="ProAssess dashboard screenshot"></div>
       <div class="card-body">
         <p class="label">01 · AI SaaS</p>
         <h3>ProAssess</h3>
@@ -95,7 +97,7 @@
     </article>
 
     <article class="card project" id="project-amansie-ride" data-reveal>
-      <div class="card-media"><img src="assets/projects/amansie-ride.webp" width="1200" height="750" loading="lazy" alt="Amansie Ride operations console sign-in screen"></div>
+      <div class="card-media"><img src="assets/projects/amansie-ride.webp" srcset="assets/projects/amansie-ride-800.webp 800w, assets/projects/amansie-ride.webp 1200w" sizes="(min-width: 840px) 560px, 100vw" width="1200" height="750" loading="lazy" alt="Amansie Ride operations console sign-in screen"></div>
       <div class="card-body">
         <p class="label">02 · Mobility · Full-stack</p>
         <h3>Amansie Ride</h3>
@@ -119,7 +121,7 @@
     </article>
 
     <article class="card project" id="project-bma-website" data-reveal>
-      <div class="card-media"><img src="assets/projects/bma-website.webp" width="1200" height="750" loading="lazy" alt="Bekwai Municipal Assembly website redesign homepage"></div>
+      <div class="card-media"><img src="assets/projects/bma-website.webp" srcset="assets/projects/bma-website-800.webp 800w, assets/projects/bma-website.webp 1200w" sizes="(min-width: 840px) 560px, 100vw" width="1200" height="750" loading="lazy" alt="Bekwai Municipal Assembly website redesign homepage"></div>
       <div class="card-body">
         <p class="label">04 · GovTech · Web</p>
         <h3>BMA website</h3>

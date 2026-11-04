@@ -13,15 +13,16 @@ const seg = (text, kind, href) => ({ text, ...(kind && { kind }), ...(href && { 
 const line = (...segs) => segs.map(s => (typeof s === 'string' ? seg(s) : s));
 const pad = (s, n) => s + ' '.repeat(Math.max(1, n - s.length));
 const projects = (data) => [...data.featured, ...data.more];
+const entry = (p) => [line(seg(p.slug, 'accent')), line(seg(`  ${p.tagline}`, 'muted'))];
 
 const handlers = {
   help: () => COMMANDS.map(c => line(seg(pad(c, 12), 'accent'), seg(HELP[c], 'muted'))),
   whoami: (_, d) => d.bio.whoami.map(t => line(t)),
   projects: (_, d) => [
     line(seg('// featured', 'muted')),
-    ...d.featured.map(p => line(seg(pad(p.slug, 28), 'accent'), p.tagline)),
+    ...d.featured.flatMap(entry),
     line(seg('// more', 'muted')),
-    ...d.more.map(p => line(seg(pad(p.slug, 28), 'accent'), p.tagline)),
+    ...d.more.flatMap(entry),
     line(seg("try: open <project>", 'muted')),
   ],
   open: (arg, d) => {
@@ -31,7 +32,7 @@ const handlers = {
     if (!p) return { lines: [line(seg(`no project "${arg}". try one of:`, 'error')), list()], action: null };
     return { lines: [line(seg('→ ', 'accent'), `opening ${p.title}…`)], action: { type: 'scroll', target: `#project-${p.slug}` } };
   },
-  stack: (_, d) => d.capabilities.map(c => line(seg(pad(c.title, 28), 'accent'), c.tools.join(' · '))),
+  stack: (_, d) => d.capabilities.flatMap(c => [line(seg(c.title, 'accent')), line(seg(`  ${c.tools.join(' · ')}`, 'muted'))]),
   experience: (arg, d) => ({
     lines: [
       ...d.experience.map(e => line(seg(pad(`${e.start} → ${e.end}`, 22), 'muted'), `${e.title}, ${e.org}`)),

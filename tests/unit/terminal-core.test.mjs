@@ -112,3 +112,12 @@ test('history on empty returns null', () => {
   assert.equal(h.prev(), null);
   assert.equal(h.next(), null);
 });
+
+test('projects and stack print name and detail on separate lines (readable when wrapped)', () => {
+  const lines = run('projects').lines.map(l => l.map(s => s.text).join(''));
+  const i = lines.indexOf('mysoc');
+  assert.ok(i >= 0, 'slug on its own line');
+  assert.ok(lines[i + 1].startsWith('  ') && lines[i + 1].includes('security'), 'indented tagline below');
+  const stack = run('stack').lines.map(l => l.map(s => s.text).join(''));
+  assert.ok(stack.includes('Cloud & backend'));
+});
