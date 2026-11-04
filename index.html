@@ -5,1371 +5,322 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beatrice Baah — Software & AI Engineer</title>
 <meta name="description" content="Beatrice Baah is a Software & AI Engineer building full-stack apps and AI-powered products, with a background in statistics, data quality, and cybersecurity.">
+<meta name="theme-color" content="#0b0d0c">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Beatrice Baah — Software & AI Engineer">
-<meta property="og:description" content="Full-stack apps and AI-powered products, backed by a data and security background most engineers don't have.">
+<meta property="og:description" content="Secure, AI-native software from an engineer with a statistics and cybersecurity background. Type 'help' in the terminal.">
 <meta property="og:image" content="https://beatbaah.github.io/assets/beatrice-headshot.jpg">
 <meta property="og:url" content="https://beatbaah.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Beatrice Baah — Software & AI Engineer">
-<meta name="twitter:description" content="Full-stack apps and AI-powered products, backed by a data and security background most engineers don't have.">
+<meta name="twitter:description" content="Secure, AI-native software from an engineer with a statistics and cybersecurity background. Type 'help' in the terminal.">
 <meta name="twitter:image" content="https://beatbaah.github.io/assets/beatrice-headshot.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink: #ece6d9;
-  --heading: #f7f3ea;
-  --cream: #121110;
-  --warm: #1b1916;
-  --gold: #c8943a;
-  --gold-light: #e8c07a;
-  --gold-pale: rgba(200,148,58,0.14);
-  --rust: #e0824f;
-  --charcoal: #080706;
-  --muted: #9c9182;
-  --border: rgba(200,148,58,0.22);
-  --mono: 'JetBrains Mono', monospace;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.22);
-  --shadow-md: 0 6px 20px rgba(0,0,0,0.40), 0 2px 6px rgba(0,0,0,0.25);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.50), 0 4px 12px rgba(0,0,0,0.28);
-  --shadow-gold: 0 8px 28px rgba(200,148,58,0.25), 0 2px 8px rgba(200,148,58,0.14);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
-
-/* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(18,17,16,0.88);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
-  padding: 0 5vw;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
-  transition: box-shadow 0.3s;
-}
-.nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.35); }
-.nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem; font-weight: 700;
-  color: var(--heading); letter-spacing: 0.02em;
-}
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
-  text-transform: uppercase; text-decoration: none;
-  color: var(--muted); transition: color 0.2s;
-  position: relative; padding-bottom: 3px;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 1px; background: var(--gold);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s ease;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-hire {
-  background: var(--gold); color: #fff;
-  border: none; padding: 0.5rem 1.4rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em;
-  text-transform: uppercase; text-decoration: none;
-  cursor: pointer; border-radius: 2px;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: var(--shadow-sm);
-}
-.nav-hire:hover { background: var(--rust); transform: translateY(-1px); box-shadow: var(--shadow-gold); }
-.nav-mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.nav-mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 1px; transition: transform 0.25s, opacity 0.25s; }
-.nav-open .bar1 { transform: translateY(7px) rotate(45deg); }
-.nav-open .bar2 { opacity: 0; }
-.nav-open .bar3 { transform: translateY(-7px) rotate(-45deg); }
-
-/* ─── HERO ─── */
-#hero {
-  min-height: 100vh; padding-top: 64px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  background: var(--cream); position: relative; overflow: hidden;
-}
-.hero-bg-pattern {
-  position: absolute; inset: 0; z-index: 0;
-  background-image:
-    radial-gradient(circle at 78% 18%, rgba(200,148,58,0.10) 0%, transparent 50%),
-    radial-gradient(circle at 18% 80%, rgba(160,79,42,0.07) 0%, transparent 50%);
-}
-/* animated floating orbs */
-.hero-orb {
-  position: absolute; border-radius: 50%; z-index: 0; pointer-events: none;
-  animation: floatOrb 8s ease-in-out infinite;
-}
-.hero-orb-1 {
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(200,148,58,0.07) 0%, transparent 70%);
-  top: 10%; right: 5%;
-  animation-delay: 0s;
-}
-.hero-orb-2 {
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(160,79,42,0.06) 0%, transparent 70%);
-  bottom: 15%; left: 8%;
-  animation-delay: -4s;
-}
-@keyframes floatOrb {
-  0%,100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-24px) scale(1.04); }
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 6rem 4vw 5rem 8vw;
-  position: relative; z-index: 1;
-}
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold-pale);
-  border: 1px solid var(--border);
-  color: var(--rust);
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.35rem 1rem; border-radius: 20px;
-  margin-bottom: 1.5rem; width: fit-content;
-  box-shadow: var(--shadow-sm);
-  animation: tagPulse 3s ease-in-out infinite;
-}
-@keyframes tagPulse {
-  0%,100% { box-shadow: var(--shadow-sm); }
-  50% { box-shadow: 0 0 0 4px rgba(200,148,58,0.12), var(--shadow-sm); }
-}
-.hero-tag::before {
-  content: ''; display: block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--gold); animation: dot 2s ease-in-out infinite;
-}
-@keyframes dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.hero-name {
-  font-size: clamp(2.6rem, 4.8vw, 4rem); font-weight: 700; line-height: 1.1;
-  color: var(--heading); margin-bottom: 0.3rem;
-}
-.hero-name em { font-style: italic; color: var(--gold); }
-.hero-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem; font-weight: 300;
-  color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 1.8rem;
-}
-.hero-bio {
-  font-size: 1rem; color: var(--ink); line-height: 1.85;
-  max-width: 520px; margin-bottom: 2.5rem;
-}
-.hero-stats {
-  display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
-}
-.stat-item {
-  text-align: left; cursor: default;
-  transition: transform 0.2s;
-}
-.stat-item:hover { transform: translateY(-3px); }
-.stat-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
-}
-.stat-label {
-  font-size: 0.72rem; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
-}
-.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--gold); color: #fff;
-  padding: 0.85rem 2rem; border: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem; font-weight: 500;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  text-decoration: none; border-radius: 2px;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: var(--shadow-md);
-}
-.btn-primary:hover { background: var(--rust); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
-.btn-outline {
-  background: transparent; color: var(--heading);
-  border: 1px solid rgba(236,230,217,0.3);
-  padding: 0.85rem 2rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem; font-weight: 500;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  text-decoration: none; border-radius: 2px;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
-  display: inline-flex; align-items: center;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-
-/* HERO RIGHT */
-.hero-right {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: center;
-  padding: 5rem 5vw 5rem 2vw;
-}
-.hero-photo-wrap { position: relative; width: 380px; max-width: 100%; }
-.hero-photo-frame {
-  position: absolute; top: -18px; right: -18px;
-  width: 100%; height: 100%;
-  border: 2px solid var(--gold); border-radius: 4px; z-index: 0;
-  transition: transform 0.4s ease;
-}
-.hero-photo-wrap:hover .hero-photo-frame { transform: translate(4px, 4px); }
-.hero-photo {
-  position: relative; z-index: 1;
-  width: 100%; aspect-ratio: 3/4;
-  object-fit: cover; object-position: top;
-  border-radius: 4px; display: block;
-  box-shadow: var(--shadow-lg);
-  transition: box-shadow 0.4s;
-}
-.hero-photo-wrap:hover .hero-photo { box-shadow: var(--shadow-gold); }
-.hero-photo-badge {
-  position: absolute; z-index: 2;
-  bottom: -20px; left: -20px;
-  background: var(--charcoal); color: var(--gold-light);
-  padding: 1rem 1.5rem; border-radius: 4px;
-  font-size: 0.82rem;
-  box-shadow: var(--shadow-md);
-  animation: badgePop 0.6s 0.8s both cubic-bezier(0.34,1.56,0.64,1);
-}
-.hero-photo-badge strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: #fff; line-height: 1; }
-@keyframes badgePop {
-  0% { transform: scale(0.7) translateY(10px); opacity: 0; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-/* ─── SECTION COMMONS ─── */
-section { padding: 6rem 8vw; }
-.section-label {
-  font-family: var(--mono);
-  font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.75rem;
-  display: flex; align-items: center; gap: 10px;
-}
-.section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
-.section-title {
-  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
-  color: var(--heading); line-height: 1.2; margin-bottom: 1rem;
-}
-.section-sub { color: var(--muted); font-size: 1rem; max-width: 580px; }
-
-/* ─── SERVICES ─── */
-#services { background: var(--warm); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem; margin-top: 3rem;
-}
-.service-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  padding: 2rem; border-radius: 6px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease, border-color 0.2s;
-  position: relative; overflow: hidden;
-  cursor: default;
-}
-.service-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(200,148,58,0.4); }
-.service-card:hover::before { transform: scaleX(1); }
-.service-icon {
-  width: 48px; height: 48px;
-  background: var(--gold-pale); border: 1px solid var(--border);
-  border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.2rem; font-size: 1.3rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s;
-}
-.service-card:hover .service-icon { transform: scale(1.1) rotate(-4deg); box-shadow: var(--shadow-md); }
-.service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--heading); margin-bottom: 0.6rem; }
-.service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-
-/* ─── SKILLS ─── */
-#skills { background: var(--charcoal); color: var(--ink); }
-#skills .section-title { color: var(--heading); }
-#skills .section-label { color: var(--gold-light); }
-#skills .section-label::before { background: var(--gold-light); }
-.skills-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; margin-top: 3rem;
-}
-.skills-col-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem;
-}
-.skill-bar-item { margin-bottom: 1.3rem; }
-.skill-bar-label {
-  display: flex; justify-content: space-between;
-  font-size: 0.88rem; color: #d4c9b8; margin-bottom: 7px;
-}
-.skill-bar-track {
-  height: 4px; background: rgba(255,255,255,0.08);
-  border-radius: 2px; overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-}
-.skill-bar-fill {
-  height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  border-radius: 2px;
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 1.4s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: 0 0 8px rgba(200,148,58,0.4);
-}
-.skill-bar-fill.animated { transform: scaleX(1); }
-.soft-skills { display: flex; flex-wrap: wrap; gap: 10px; }
-.soft-pill {
-  background: rgba(200,148,58,0.12); border: 1px solid rgba(200,148,58,0.25);
-  color: var(--gold-light); padding: 0.4rem 1rem; border-radius: 20px;
-  font-size: 0.83rem; cursor: default;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.soft-pill:hover { background: rgba(200,148,58,0.22); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(200,148,58,0.15); }
-
-/* ─── TOOLS ─── */
-#tools { background: var(--cream); }
-.tools-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
-  gap: 1.2rem; margin-top: 3rem;
-}
-.tool-card {
-  background: var(--warm); border: 1px solid var(--border);
-  padding: 1.6rem 1.2rem; border-radius: 8px; text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s, border-color 0.2s;
-  cursor: default; position: relative; overflow: hidden;
-}
-.tool-card::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at center, rgba(200,148,58,0.06) 0%, transparent 70%);
-  opacity: 0; transition: opacity 0.3s;
-}
-.tool-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-gold); border-color: rgba(200,148,58,0.5); }
-.tool-card:hover::after { opacity: 1; }
-.tool-icon { font-size: 2rem; margin-bottom: 0.7rem; display: block; transition: transform 0.3s; }
-.tool-card:hover .tool-icon { transform: scale(1.2) rotate(-5deg); }
-.tool-name { font-size: 0.88rem; font-weight: 500; color: var(--heading); }
-.tool-level { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
-
-/* ─── EXPERIENCE ─── */
-#experience { background: var(--warm); }
-.timeline { margin-top: 3rem; position: relative; }
-.timeline::before {
-  content: ''; position: absolute; left: 0; top: 12px; bottom: 0;
-  width: 1px; background: var(--border);
-}
-.timeline-item {
-  padding-left: 2.5rem; margin-bottom: 2.8rem; position: relative;
-  transition: transform 0.2s;
-}
-.timeline-dot {
-  position: absolute; left: -5px; top: 10px;
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--gold); border: 2px solid var(--warm);
-  box-shadow: 0 0 0 3px rgba(200,148,58,0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.timeline-item:hover .timeline-dot { transform: scale(1.4); box-shadow: 0 0 0 5px rgba(200,148,58,0.15); }
-.timeline-period {
-  font-size: 0.75rem; color: var(--gold); font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem;
-}
-.timeline-role { font-size: 1.1rem; font-weight: 700; color: var(--heading); line-height: 1.3; }
-.timeline-org { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.8rem; }
-.timeline-bullets { list-style: none; padding: 0; }
-.timeline-bullets li {
-  font-size: 0.88rem; color: var(--ink);
-  padding: 0.2rem 0 0.2rem 1.3rem;
-  position: relative; line-height: 1.7;
-}
-.timeline-bullets li::before {
-  content: '→'; position: absolute; left: 0;
-  color: var(--gold); font-size: 0.75rem; top: 0.3rem;
-}
-
-/* ─── PROJECTS ─── */
-#projects { background: var(--cream); }
-.projects-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem; margin-top: 3rem;
-}
-.project-card {
-  background: var(--warm); border: 1px solid var(--border);
-  padding: 2rem; border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  position: relative; overflow: hidden;
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s;
-  cursor: default;
-  display: flex; flex-direction: column;
-}
-.project-card::before {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 0;
-  background: linear-gradient(0deg, rgba(200,148,58,0.06) 0%, transparent 100%);
-  transition: height 0.35s ease;
-}
-.project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.project-card:hover::before { height: 100%; }
-.project-shot {
-  width: 100%; aspect-ratio: 16/10; border-radius: 6px; overflow: hidden;
-  margin-bottom: 1.25rem; background: linear-gradient(135deg, var(--charcoal) 0%, var(--warm) 100%);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.project-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.project-shot-placeholder { color: var(--muted); opacity: 0.5; }
-.project-shot-placeholder svg { width: 34px; height: 34px; }
-.project-tag-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1rem; }
-.project-tag {
-  display: inline-block; background: var(--gold-pale); color: var(--rust);
-  font-family: var(--mono);
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.25rem 0.8rem; border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-}
-.project-card h3 { font-size: 1.1rem; color: var(--heading); margin-bottom: 0.6rem; }
-.project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; flex-grow: 1; }
-.project-tech-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
-.project-tech-pill {
-  font-family: var(--mono);
-  font-size: 0.72rem; color: var(--heading); background: rgba(200,148,58,0.10);
-  border: 1px solid var(--border); padding: 0.2rem 0.65rem; border-radius: 20px;
-}
-.project-metric {
-  margin-top: 1rem; padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.82rem; color: var(--rust); font-weight: 500;
-}
-.project-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.78rem; font-weight: 500; color: var(--gold); text-decoration: none;
-}
-.project-link:hover { color: var(--rust); }
-.project-link svg { width: 13px; height: 13px; }
-
-/* ─── LABS (secondary projects) ─── */
-.labs-heading { margin-top: 4rem; margin-bottom: 1.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: var(--heading); }
-.labs-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
-.lab-card {
-  background: var(--cream); border: 1px solid var(--border);
-  padding: 1.2rem 1.4rem; border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.lab-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.lab-card .project-tag { margin-bottom: 0.6rem; }
-.lab-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: var(--heading); margin-bottom: 0.4rem; }
-.lab-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-
-/* ─── CERTIFICATIONS ─── */
-#certifications { background: var(--warm); }
-.certs-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem; margin-top: 3rem;
-}
-.cert-card {
-  background: var(--cream); border: 1px solid var(--border);
-  padding: 1.4rem 1.5rem; border-radius: 8px;
-  display: flex; align-items: flex-start; gap: 12px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s, border-color 0.2s;
-  cursor: default;
-}
-.cert-card:hover { border-color: var(--gold); transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-gold); }
-.cert-icon {
-  width: 38px; height: 38px; border-radius: 10px;
-  background: var(--gold-pale); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s;
-}
-.cert-card:hover .cert-icon { transform: rotate(-8deg) scale(1.1); }
-.cert-body { flex: 1; }
-.cert-name { font-size: 0.88rem; font-weight: 500; color: var(--heading); line-height: 1.4; }
-.cert-issuer { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
-
-/* ─── TESTIMONIALS ─── */
-#testimonials { background: var(--charcoal); }
-#testimonials .section-title { color: #fff; }
-#testimonials .section-label { color: var(--gold-light); }
-#testimonials .section-label::before { background: var(--gold-light); }
-.testimonials-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem; margin-top: 3rem;
-}
-.testimonial-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(200,148,58,0.18);
-  padding: 2rem; border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.2s;
-  cursor: default;
-}
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.3), 0 0 0 1px rgba(200,148,58,0.25);
-  border-color: rgba(200,148,58,0.35);
-}
-.testimonial-quote {
-  font-family: 'Space Grotesk', sans-serif; font-style: italic;
-  font-size: 1rem; color: #e8ddd0; line-height: 1.85; margin-bottom: 1.5rem;
-}
-.testimonial-quote::before { content: '\201C'; color: var(--gold); font-size: 2.2rem; line-height: 0; vertical-align: -0.55rem; margin-right: 4px; }
-.testimonial-author { display: flex; align-items: center; gap: 12px; }
-.testimonial-avatar {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--gold); display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem; font-weight: 700; color: #fff;
-  box-shadow: 0 2px 8px rgba(200,148,58,0.3);
-}
-.testimonial-name { font-size: 0.9rem; font-weight: 500; color: #fff; }
-.testimonial-role { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
-
-/* ─── VIDEO ─── */
-#video { background: var(--cream); text-align: center; }
-.video-wrapper {
-  max-width: 720px; margin: 3rem auto 0;
-  background: var(--charcoal); border-radius: 10px; overflow: hidden;
-  aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
-  position: relative; border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  transition: box-shadow 0.3s;
-}
-.video-wrapper:hover { box-shadow: var(--shadow-gold); }
-.video-placeholder { text-align: center; color: rgba(255,255,255,0.5); padding: 2rem; }
-.video-play-btn {
-  width: 76px; height: 76px; background: var(--gold); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
-  cursor: pointer; box-shadow: 0 0 0 0 rgba(200,148,58,0.5);
-  animation: pulse-ring 2.5s ease-in-out infinite;
-  transition: transform 0.2s, background 0.2s;
-}
-.video-play-btn:hover { transform: scale(1.12); background: var(--rust); animation: none; }
-.video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 5px; }
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(200,148,58,0.5); }
-  60% { box-shadow: 0 0 0 18px rgba(200,148,58,0); }
-  100% { box-shadow: 0 0 0 0 rgba(200,148,58,0); }
-}
-
-/* ─── CONTACT ─── */
-#contact { background: var(--warm); }
-.contact-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; margin-top: 3rem; align-items: start;
-}
-.contact-info h3 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1rem; }
-.contact-info p { color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
-.contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-.contact-link-item {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none; color: var(--heading);
-  font-size: 0.9rem; padding: 0.9rem 1.2rem;
-  background: var(--cream); border: 1px solid var(--border);
-  border-radius: 6px; box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.contact-link-item:hover { border-color: var(--gold); color: var(--gold); transform: translateX(6px); box-shadow: var(--shadow-md); }
-.contact-link-icon {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; flex-shrink: 0;
-}
-.contact-form { display: flex; flex-direction: column; gap: 1rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-size: 0.78rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.form-group input, .form-group textarea {
-  background: var(--cream); border: 1px solid rgba(236,230,217,0.15);
-  padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem; color: var(--ink); border-radius: 4px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none; resize: vertical;
-  box-shadow: var(--shadow-sm);
-}
-.form-group input:focus, .form-group textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(200,148,58,0.14), var(--shadow-sm);
-}
-.form-group textarea { min-height: 130px; }
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--charcoal); padding: 2.5rem 8vw;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
-}
-.footer-name { font-family: 'Space Grotesk', sans-serif; color: var(--gold-light); font-size: 1rem; }
-.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
-.social-row { display: flex; gap: 0.8rem; }
-.social-link {
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid rgba(200,148,58,0.25);
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; color: var(--gold-light); font-size: 0.75rem; font-weight: 700;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-.social-link:hover { background: rgba(200,148,58,0.2); border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(200,148,58,0.2); }
-
-/* ─── SVG ICONS ─── */
-.icon { width: 18px; height: 18px; display: inline-block; vertical-align: middle; }
-
-/* ─── MOBILE NAV OVERLAY ─── */
-.mobile-nav-overlay {
-  display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-  background: rgba(12,11,10,0.97); z-index: 99;
-  flex-direction: column; align-items: center; justify-content: center;
-  gap: 2rem; backdrop-filter: blur(8px);
-}
-.mobile-nav-overlay.open { display: flex; }
-.mobile-nav-overlay a {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.8rem; font-weight: 700; color: var(--heading);
-  text-decoration: none; transition: color 0.2s;
-}
-.mobile-nav-overlay a:hover { color: var(--gold); }
-.mobile-nav-hire {
-  background: var(--gold) !important; color: #fff !important;
-  padding: 0.9rem 2.5rem !important; border-radius: 2px !important;
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  box-shadow: var(--shadow-md);
-}
-
-/* ─── ANIMATIONS ─── */
-.fade-up {
-  opacity: 0; transform: translateY(36px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-/* ─── MOBILE ─── */
-@media (max-width: 900px) {
-  #hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .hero-left {
-    padding: 5rem 5vw 3rem;
-    order: 2;
-  }
-  .hero-right {
-    order: 1;
-    padding: 3rem 5vw 0;
-    min-height: 55vw;
-    align-items: flex-end;
-  }
-  .hero-photo-wrap {
-    width: 100%;
-    max-width: 340px;
-  }
-  .hero-photo {
-    aspect-ratio: 4/3;
-    object-position: center top;
-  }
-  .hero-photo-badge {
-    bottom: -14px;
-    left: -8px;
-    padding: 0.75rem 1rem;
-    font-size: 0.75rem;
-  }
-  .hero-photo-badge strong { font-size: 1.1rem; }
-  .hero-photo-frame { top: -10px; right: -10px; }
-  .nav-links, .nav-hire { display: none; }
-  .nav-mobile-toggle { display: flex; }
-  section { padding: 4rem 5vw; }
-  .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .form-row { grid-template-columns: 1fr; }
-  footer { flex-direction: column; text-align: center; }
-  .services-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 500px) {
-  .hero-stats { gap: 1.5rem; }
-  .stat-num { font-size: 1.6rem; }
-  .hero-right { min-height: 65vw; padding: 2rem 5vw 0; }
-  .hero-photo-wrap { max-width: 260px; }
-  .hero-photo { aspect-ratio: 1/1; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#work">Skip to work</a>
 
-<nav id="main-nav">
-  <div class="nav-logo">Beatrice Baah</div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-hire">Hire Me</a>
-  <div class="nav-mobile-toggle" id="mob-toggle" onclick="toggleMobile()">
-    <span class="bar1"></span><span class="bar2"></span><span class="bar3"></span>
-  </div>
-</nav>
+<header class="nav">
+  <a class="nav-logo" href="#hero"><span class="accent">~/</span>beatrice</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#work">work</a></li>
+      <li class="hide-sm"><a href="#capabilities">what I do</a></li>
+      <li class="hide-sm"><a href="#background">background</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-<div class="mobile-nav-overlay" id="mobile-nav">
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#experience" onclick="closeMobile()">Experience</a>
-  <a href="#projects" onclick="closeMobile()">Projects</a>
-  <a href="#certifications" onclick="closeMobile()">Certifications</a>
-  <a href="#contact" class="mobile-nav-hire" onclick="closeMobile()">Hire Me</a>
-</div>
+<main>
+<!-- ───────── HERO ───────── -->
+<section id="hero" class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="status">
+        <img class="avatar" src="assets/beatrice-headshot.webp" width="640" height="854" alt="Beatrice Baah">
+        <span class="pill"><span class="dot" aria-hidden="true"></span>open to roles &amp; projects</span>
+      </div>
+      <h1><span class="name" data-decrypt>Beatrice Baah</span><span class="subline">builds secure, AI&#8209;native software.</span></h1>
+      <p class="pitch">I build full-stack apps and AI products, shaped by years of statistics and data-quality work in Ghana's public sector and an MSc in Cybersecurity. I ship products, then make sure they hold up.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#work">View work</a>
+        <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download>Download CV</a>
+        <a class="text-link" href="#contact">Have a project? →</a>
+      </div>
+      <dl class="stats">
+        <div><dt>products shipped</dt><dd>8+</dd></div>
+        <div><dt>years in data &amp; gov</dt><dd>5+</dd></div>
+        <div><dt>citizens served</dt><dd>100K+</dd></div>
+      </dl>
+    </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-
-  <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-frame"></div>
-      <img src="assets/beatrice-headshot.jpg" alt="Beatrice Baah — Software &amp; AI Engineer" class="hero-photo">
-      <div class="hero-photo-badge">
-        <strong>MSc</strong>
-        Cybersecurity &amp; Digital Forensics
+    <div class="terminal" data-terminal>
+      <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><p>beatrice@portfolio: ~</p></div>
+      <div class="term-output" aria-live="polite"><div class="term-line"><span class="accent">$</span> whoami</div><div class="term-line">Beatrice Baah. Software &amp; AI engineer.</div><div class="term-line">MSc Cybersecurity &amp; Digital Forensics · BSc Statistics (KNUST).</div><div class="term-line">5+ years of statistics and data-quality work in Ghana's public sector.</div></div>
+      <div class="term-chips" hidden>
+        <button type="button" data-cmd="help">help</button>
+        <button type="button" data-cmd="projects">projects</button>
+        <button type="button" data-cmd="hire">hire</button>
       </div>
-    </div>
-  </div>
-
-  <div class="hero-left">
-    <div class="hero-tag">Open to Software &amp; AI Engineering roles</div>
-    <h1 class="hero-name">Beatrice<br><em>Baah</em></h1>
-    <p class="hero-title">Software Engineer &nbsp;·&nbsp; Full-Stack &amp; AI Products &nbsp;·&nbsp; Data &amp; Security Background</p>
-    <p class="hero-bio">I build full-stack applications and AI-powered products, from a hiring platform that uses Gemini to grade candidates to a travel app that pairs Claude with vector search to match trips to what people are actually looking for. My path into software came after years of statistics and data quality work inside Ghana's local government and statistical service, plus an MSc in Cybersecurity. That background still shapes how I build: I care about data integrity and security just as much as I care about shipping good products.</p>
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Products Shipped</div></div>
-      <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Years Exp.</div></div>
-      <div class="stat-item"><div class="stat-num">100K+</div><div class="stat-label">Citizens Served</div></div>
-    </div>
-    <div class="hero-cta-row">
-      <a href="#contact" class="btn-primary">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get In Touch
-      </a>
-      <a href="#projects" class="btn-outline">View My Work</a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">What I offer</div>
-  <h2 class="section-title">What I Build</h2>
-  <p class="section-sub">A mix of full-stack development, AI integration, and the data &amp; security instincts I picked up before I started building software.</p>
-  <div class="services-grid">
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      </div>
-      <h3>Full-Stack Web Apps</h3>
-      <p>React and TypeScript on the frontend, Node.js or Firebase on the backend. I've shipped everything from SaaS dashboards to client websites.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
-      </div>
-      <h3>AI-Powered Products</h3>
-      <p>I integrate Claude, Gemini, and OpenAI into real products, things like AI grading, RAG search, and generated reports, not a chatbot bolted onto a landing page.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-      </div>
-      <h3>Cloud &amp; Backend Systems</h3>
-      <p>Firebase, Google Cloud, MongoDB, Cloud Run. I set up the auth, databases, and APIs that keep a product running once real users show up.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h3>Cybersecurity &amp; SOC Tooling</h3>
-      <p>I've built threat detection dashboards and network scanning tools, and I hold an MSc in Cybersecurity &amp; Digital Forensics.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <h3>Data Analytics &amp; BI</h3>
-      <p>Power BI dashboards, statistical modeling, survey analysis. This is where I started, and it still shapes how I think about product decisions.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">
-        <svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <h3>Automation &amp; DevOps</h3>
-      <p>Bash scripts and Linux automation that take repetitive manual work off a team's plate.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">Expertise</div>
-  <h2 class="section-title">Skills &amp; Proficiencies</h2>
-  <div class="skills-layout">
-    <div>
-      <div class="skills-col-title">Technical Skills</div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>React &amp; TypeScript</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Node.js &amp; Firebase</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Python</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>LLM &amp; RAG Integration (Claude, Gemini)</span><span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Microsoft Excel &amp; Power BI</span><span>95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Statistical Analysis</span><span>92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>SQL &amp; Cloud (GCP, MongoDB)</span><span>78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-label"><span>Cybersecurity Analysis</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-    </div>
-    <div>
-      <div class="skills-col-title">Soft Skills</div>
-      <div class="soft-skills">
-        <span class="soft-pill">Product Thinking</span>
-        <span class="soft-pill">Analytical Thinking</span>
-        <span class="soft-pill">Shipping End-to-End</span>
-        <span class="soft-pill">Attention to Detail</span>
-        <span class="soft-pill">Problem Solving</span>
-        <span class="soft-pill">Team Collaboration</span>
-        <span class="soft-pill">Stakeholder Management</span>
-        <span class="soft-pill">Fast Learner</span>
-        <span class="soft-pill">Critical Thinking</span>
-        <span class="soft-pill">Leadership</span>
-        <span class="soft-pill">Mentoring</span>
-        <span class="soft-pill">Adaptability</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section id="tools">
-  <div class="section-label">Toolkit</div>
-  <h2 class="section-title">Tools &amp; Technologies</h2>
-  <p class="section-sub">Tools I use regularly, across engineering, data, and security.</p>
-  <div class="tools-grid">
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">React &amp; TypeScript</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 18V10l4 4 4-4v8"/><path d="M8 6h8"/></svg></span><div class="tool-name">Node.js / Express</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">Python</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="tool-name">Firebase</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="tool-name">Google Cloud</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><div class="tool-name">MongoDB &amp; SQL</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></span><div class="tool-name">Claude &amp; Gemini APIs</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span><div class="tool-name">AI-Assisted Workflows</div><div class="tool-level">Claude, Codex, AI Studio</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span><div class="tool-name">Microsoft Excel</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span><div class="tool-name">Power BI &amp; STATA</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="tool-name">SIEM &amp; Threat Intel</div><div class="tool-level">Intermediate</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><div class="tool-name">Git &amp; GitHub</div><div class="tool-level">Advanced</div></div>
-    <div class="tool-card fade-up"><span class="tool-icon"><svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><div class="tool-name">Flutter</div><div class="tool-level">Intermediate</div></div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Work History</div>
-  <h2 class="section-title">Professional Experience</h2>
-  <div class="timeline">
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Nov 2023 — Present</div>
-      <div class="timeline-role">Municipal Statistician</div>
-      <div class="timeline-org">Local Government Service — Bekwai Municipal Assembly, Ghana</div>
-      <ul class="timeline-bullets">
-        <li>Analyzed data from 100,000+ citizens, achieving 25% efficiency improvement in resource allocation across 161 communities.</li>
-        <li>Developed surveys reaching 130,000+ respondents with 90% completion rate, boosting satisfaction scores by 15%.</li>
-        <li>Utilized 20 financial models improving budget accuracy by 30%, supporting GHS 4M annual revenue forecasts.</li>
-        <li>Designed 5 dynamic dashboards used by 50 municipal members, reducing decision-making delays by 40%.</li>
-        <li>Collaborated with 8 departments to define KPIs, increasing project completion rates by 25%.</li>
-      </ul>
-    </div>
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2024 General Election</div>
-      <div class="timeline-role">Constituency Collation Officer</div>
-      <div class="timeline-org">Electoral Commission Ghana — Bekwai Constituency</div>
-      <ul class="timeline-bullets">
-        <li>Collated and verified presidential and parliamentary election results from all polling stations.</li>
-        <li>Conducted accurate electronic data entry and tabulation to support the Returning Officer.</li>
-        <li>Ensured data consistency, accuracy, and integrity through cross-checking and validation of results sheets.</li>
-      </ul>
-    </div>
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Dec 2023 — Apr 2024</div>
-      <div class="timeline-role">Zonal Data Quality Monitor</div>
-      <div class="timeline-org">Ghana Statistical Service — Bekwai Municipal / Amansie West District</div>
-      <ul class="timeline-bullets">
-        <li>Mentored 188 supervisors and enumerators, reducing operational errors by 50%.</li>
-        <li>Leveraged STATA and Excel to cut data processing time by 40%, boosting throughput by 20%.</li>
-        <li>Ensured 288 Enumeration Zones were fully covered, capturing all 13,050 businesses in the Integrated Business Establishment Survey.</li>
-      </ul>
-    </div>
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Jan 2022 — Aug 2023</div>
-      <div class="timeline-role">Assistant Statistician</div>
-      <div class="timeline-org">Local Government Service — Bekwai Municipal Assembly</div>
-      <ul class="timeline-bullets">
-        <li>Conducted data analysis to identify trends and patterns in large municipal datasets.</li>
-        <li>Created detailed pivot reports and visualizations using Excel and Power BI for key stakeholders.</li>
-        <li>Designed bespoke experimental plans and developed research methodologies with senior statisticians.</li>
-      </ul>
-    </div>
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Jun 2021 — Sep 2021</div>
-      <div class="timeline-role">Data Quality Monitor</div>
-      <div class="timeline-org">Ghana Statistical Service — Ga North Municipal Assembly</div>
-      <ul class="timeline-bullets">
-        <li>Surveyed 87,556 households and 93,833 structures across 36 supervisory areas.</li>
-        <li>Used STATA to identify hidden errors across 186 Enumeration Areas daily.</li>
-        <li>Prepared 30 progress analyses for the District Data Quality Management Team using Excel.</li>
-      </ul>
-    </div>
-    <div class="timeline-item fade-up">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Sep 2019 — Sep 2020</div>
-      <div class="timeline-role">Data Analyst Intern</div>
-      <div class="timeline-org">Social Security &amp; National Insurance Trust — Kumasi, Ghana</div>
-      <ul class="timeline-bullets">
-        <li>Conducted data validation, cleanup, and SSNIT contribution calculations for companies.</li>
-        <li>Sold 60 apartments in 3 months; increased customer satisfaction rating to 80%.</li>
-        <li>Achieved significant productivity gains through Excel optimization across the team.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Proof of Work</div>
-  <h2 class="section-title">Projects &amp; Labs</h2>
-  <p class="section-sub">Here's a look at what I've actually built and shipped.</p>
-  <p class="section-sub" style="font-size:0.85rem;margin-top:0.4rem">I build with AI-assisted workflows, using tools like Claude, Codex, and AI Studio to move faster. The architecture, product decisions, and debugging are mine.</p>
-  <div class="projects-grid">
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/proassess-screenshot.jpg" alt="ProAssess candidate assessment dashboard"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">Full-Stack · AI SaaS</span>
-        <a href="https://github.com/Beatbaah/ProAssess" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <h3>ProAssess — AI Hiring Assessment Platform</h3>
-      <p>A hiring platform where recruiters invite candidates by email, candidates take four timed reasoning tests, and Gemini writes up a score summary the moment they submit. I built the candidate pipeline, a side-by-side comparison view for shortlisting, and a GDPR-compliant way to erase candidate data on request.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">React 19 + TypeScript</span>
-        <span class="project-tech-pill">Firebase</span>
-        <span class="project-tech-pill">Gemini AI</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/tripplanner-screenshot.jpg" alt="Dream Trip Planner input screen"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">AI · Full-Stack</span>
-        <span style="display:flex;gap:0.6rem">
-          <a href="https://github.com/Beatbaah/dream-trip-planner" target="_blank" rel="noopener" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            App
-          </a>
-          <a href="https://github.com/Beatbaah/dream-trip-planner-backend" target="_blank" rel="noopener" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            Backend
-          </a>
-        </span>
-      </div>
-      <h3>Dream Trip Planner — AI Travel Agent</h3>
-      <p>You describe a dream trip by voice, text, or photos. Claude figures out what you're actually looking for, OpenAI embeddings find similar trips in a vector database, and Claude writes up a personalised summary for each match. Node.js backend on Cloud Run, Flutter on the frontend.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">Flutter</span>
-        <span class="project-tech-pill">Node.js + TypeScript</span>
-        <span class="project-tech-pill">Claude + OpenAI</span>
-        <span class="project-tech-pill">Cloud Run</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/mysoc-screenshot.jpg" alt="mySOC threat overview dashboard"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">Cybersecurity</span>
-        <a href="https://github.com/Beatbaah/mySOC" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <h3>mySOC — Security Operations Center Dashboard</h3>
-      <p>A security operations dashboard I built on my own. It does live packet capture, anomaly detection (rule-based and an Isolation Forest model), threat intel lookups against AbuseIPDB, AlienVault, and VirusTotal, plus incident tracking and automated reports.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">Python</span>
-        <span class="project-tech-pill">Streamlit</span>
-        <span class="project-tech-pill">Scapy</span>
-        <span class="project-tech-pill">ML Anomaly Detection</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/civicmind-screenshot.jpg" alt="CivicMind AI municipal dashboard"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">AI · GovTech</span>
-        <a href="https://github.com/Beatbaah/civicmind-ai" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <h3>CivicMind AI — Municipal Intelligence Platform</h3>
-      <p>A tool for tracking municipal revenue and department performance. Gemini turns the raw numbers into readable insight, with a rules-based engine as a fallback when there's no API key. I built this out of my own experience working inside municipal data operations in Ghana.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">React 19 + TypeScript</span>
-        <span class="project-tech-pill">MongoDB</span>
-        <span class="project-tech-pill">Gemini AI</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/susu-screenshot.jpg" alt="Excellent Susu dashboard"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">Fintech</span>
-        <a href="https://github.com/Beatbaah/susu-management-app" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <h3>Excellent Susu — Savings Group Management App</h3>
-      <p>A mobile-first app for managing Susu (rotating savings groups), with four roles from Super Admin down to Member. It handles contributions, payouts, reminders, receipts, and an audit trail so the money stays accountable.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">React</span>
-        <span class="project-tech-pill">Firebase</span>
-        <span class="project-tech-pill">Role-Based Access</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/tax-system-screenshot.jpg" alt="Bekwai Municipal Assembly tax revenue dashboard"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">Full-Stack · GovTech</span>
-        <a href="https://github.com/Beatbaah/Tax-System" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <h3>Tax System — Municipal Revenue Management</h3>
-      <p>A tax management system I built for Bekwai Municipal Assembly on React and Firebase. Real records, real Cloud Functions, serving an actual municipal client, not a demo.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">React</span>
-        <span class="project-tech-pill">Firebase</span>
-        <span class="project-tech-pill">Cloud Functions</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="labs-heading">Labs &amp; Earlier Work</h3>
-  <div class="labs-grid">
-    <div class="lab-card fade-up">
-      <div class="project-tag-row">
-        <span class="project-tag">Cloud · AI Agent</span>
-        <a href="https://github.com/Forenly/gcp" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-      </div>
-      <h4>Lawn Mower Deployment Advisor</h4>
-      <p>A hackathon project for Google Cloud's Rapid Agent Hackathon. A Gemini agent that recommends robotic lawn mowers and deployment plans, pulling from a MongoDB registry.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <div class="project-tag-row">
-        <span class="project-tag">AI · Research Tools</span>
-        <a href="https://github.com/Beatbaah/datatool-ai" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-      </div>
-      <h4>DataTool AI</h4>
-      <p>A tool for running survey and research projects, with a setup wizard, structured survey forms, and Gemini handling the reporting.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <div class="project-tag-row">
-        <span class="project-tag">Cybersecurity</span>
-        <a href="https://github.com/Beatbaah/netscanner" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-      </div>
-      <h4>Network Scanner</h4>
-      <p>A Python tool for network reconnaissance. It scans for hosts and services, gathers intel, and generates reports.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <span class="project-tag">DevOps</span>
-      <h4>Linux Automation Toolkit</h4>
-      <p>Bash scripts I use for Linux system admin, covering reliability checks and general automation.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <span class="project-tag">Cybersecurity</span>
-      <h4>St. Marven Clinic — Incident Response</h4>
-      <p>Analyzed network traffic and logs during a real incident on a Windows workstation, then did threat hunting and vulnerability checks across staff machines. Part of an IBM sprint.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <span class="project-tag">Survey Analytics</span>
-      <h4>National Business Establishment Survey</h4>
-      <p>Covered all 288 Enumeration Zones and 13,050 businesses for this survey. Mentored 188 field staff and used STATA to hit 100% data quality.</p>
-    </div>
-    <div class="lab-card fade-up">
-      <span class="project-tag">Business Intelligence</span>
-      <h4>Municipal Budget Optimization</h4>
-      <p>Built 20 financial models for Bekwai Municipal Assembly that improved budget accuracy by 30%, feeding into GHS 4M in annual revenue forecasts across 5 Power BI dashboards.</p>
-    </div>
-  </div>
-
-  <h3 class="labs-heading">Client &amp; Freelance Work</h3>
-  <div class="projects-grid">
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/corporateworld-screenshot.jpg" alt="Corporate World e-commerce homepage"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">E-Commerce · Client Site</span>
-        <a href="https://corporate-world-gh.web.app" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Site
-        </a>
-      </div>
-      <h3>Corporate World — Office Wear E-Commerce</h3>
-      <p>A live online shop for a Ghana-based corporate wear brand. Customers browse and order dresses and office outfits, with auth, cart, wishlist, and checkout backed by Firebase and Firestore security rules that keep orders immutable once placed.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">Firebase</span>
-        <span class="project-tech-pill">Firestore</span>
-        <span class="project-tech-pill">E-Commerce</span>
-      </div>
-    </div>
-    <div class="project-card fade-up">
-      <div class="project-shot"><img src="assets/haske-screenshot.jpg" alt="Haske Spa and Events homepage"></div>
-      <div class="project-tag-row">
-        <span class="project-tag">Booking · Client Site</span>
-        <a href="https://haskespaandevents.web.app" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Site
-        </a>
-      </div>
-      <h3>Haske Spa &amp; Events — Booking Site</h3>
-      <p>A live site for a spa and event styling business in Kasoa, Ghana. Covers plant-based spa treatments and themed event decor, with a gallery and a booking flow that routes straight into WhatsApp for the client's actual workflow.</p>
-      <div class="project-tech-row">
-        <span class="project-tech-pill">Firebase Hosting</span>
-        <span class="project-tech-pill">Booking Flow</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="section-label">Credentials</div>
-  <h2 class="section-title">Certifications</h2>
-  <div class="certs-grid">
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="cert-body"><div class="cert-name">Certified Cybersecurity Educator Professional (CCEP)</div><div class="cert-issuer">Nov 2025</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="cert-body"><div class="cert-name">Google Cybersecurity Certificate</div><div class="cert-issuer">Google &nbsp;·&nbsp; Dec 2024</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="cert-body"><div class="cert-name">Respond &amp; Mitigate Security Threats</div><div class="cert-issuer">IBM &nbsp;·&nbsp; Oct 2024</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="cert-body"><div class="cert-name">Mastercard Cybersecurity Job Simulation</div><div class="cert-issuer">Forage &nbsp;·&nbsp; Sep 2024</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="cert-body"><div class="cert-name">SQL Fundamentals</div><div class="cert-issuer">Dataquest.io &nbsp;·&nbsp; 2023</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="cert-body"><div class="cert-name">Power BI in Data Analytics Virtual Case Experience</div><div class="cert-issuer">Forage &nbsp;·&nbsp; Sep 2022</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="cert-body"><div class="cert-name">Python Programming Foundations</div><div class="cert-issuer">Udacity &nbsp;·&nbsp; 2022</div></div></div>
-    <div class="cert-card fade-up"><div class="cert-icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="cert-body"><div class="cert-name">Excel Fundamentals — Formulas for Finance</div><div class="cert-issuer">Corporate Finance Institute &nbsp;·&nbsp; 2022</div></div></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-label">Social Proof</div>
-  <h2 class="section-title">What People Say</h2>
-  <div class="testimonials-grid">
-    <div class="testimonial-card fade-up">
-      <p class="testimonial-quote">Beatrice delivered an exceptional dashboard that transformed how our team interprets municipal data. Her ability to translate complex data into actionable insights is outstanding.</p>
-      <div class="testimonial-author"><div class="testimonial-avatar">KA</div><div><div class="testimonial-name">K. Asante</div><div class="testimonial-role">Department Head, Bekwai Municipal Assembly</div></div></div>
-    </div>
-    <div class="testimonial-card fade-up">
-      <p class="testimonial-quote">Her data quality monitoring was impeccable. She trained our entire team and ensured zero errors in the final dataset. A true professional with remarkable statistical expertise.</p>
-      <div class="testimonial-author"><div class="testimonial-avatar">EA</div><div><div class="testimonial-name">E. Acheampong</div><div class="testimonial-role">District Manager, Ghana Statistical Service</div></div></div>
-    </div>
-    <div class="testimonial-card fade-up">
-      <p class="testimonial-quote">Beatrice brings a unique combination of statistical rigor and cybersecurity awareness. She doesn't just analyze data, she protects it. I'd recommend her without hesitation.</p>
-      <div class="testimonial-author"><div class="testimonial-avatar">MO</div><div><div class="testimonial-name">M. Owusu</div><div class="testimonial-role">Senior Statistician, Local Government Service</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEO -->
-<section id="video">
-  <div class="section-label" style="justify-content:center">Intro</div>
-  <h2 class="section-title" style="text-align:center">Watch My Introduction</h2>
-  <p class="section-sub" style="max-width:520px;margin:0.5rem auto 0;text-align:center">A short video about who I am and what I build.</p>
-  <div class="video-wrapper">
-    <div class="video-placeholder">
-      <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-      <p style="color:rgba(255,255,255,0.35);font-size:0.85rem">Add your video URL here<br><span style="font-size:0.75rem;color:rgba(255,255,255,0.2)">Replace with a YouTube or Loom embed</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Let's Talk</div>
-  <h2 class="section-title">Get In Touch</h2>
-  <div class="contact-layout">
-    <div class="contact-info fade-up">
-      <h3>Got a project in mind?</h3>
-      <p>If you're looking for someone who can build the full product and think about data and security while doing it, let's talk.</p>
-      <div class="contact-links">
-        <a href="mailto:beatrice.baah3@hotmail.com" class="contact-link-item">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          beatrice.baah3@hotmail.com
-        </a>
-        <a href="https://github.com/Beatbaah" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.41-.01 2.74 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg></span>
-          github.com/Beatbaah
-        </a>
-        <a href="https://www.linkedin.com/in/bbaah2/" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
-          linkedin.com/in/bbaah2
-        </a>
-        <a href="https://wa.me/233245989981" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-          +233 24 598 9981 (WhatsApp)
-        </a>
-        <a href="https://x.com/larahvega" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></span>
-          @larahvega
-        </a>
-        <a href="https://instagram.com/la_rah_ve_ga" class="contact-link-item" target="_blank" rel="noopener">
-          <span class="contact-link-icon"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span>
-          @la_rah_ve_ga
-        </a>
-      </div>
-    </div>
-    <div class="fade-up">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" name="firstName" placeholder="Jane" required></div>
-          <div class="form-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Doe" required></div>
-        </div>
-        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="jane@company.com" required></div>
-        <div class="form-group"><label>Service Needed</label><input type="text" name="service" placeholder="e.g. Power BI Dashboard, Data Analysis..."></div>
-        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project..."></textarea></div>
-        <button type="submit" class="btn-primary" style="align-self:flex-start">Send Message &#8594;</button>
-        <div id="form-success" style="display:none;color:var(--gold);font-size:0.88rem;margin-top:0.5rem">&#10003; Opening your email app with this pre-filled — hit send there to reach me.</div>
+      <form class="term-form" hidden>
+        <label class="term-prompt" for="term-input">beatrice@portfolio:~$</label>
+        <input id="term-input" class="term-input" aria-label="Terminal command" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
       </form>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-name">Beatrice Baah</div>
-  <div class="footer-copy">&copy; 2025 Beatrice Baah. All rights reserved.</div>
-  <div class="social-row">
-    <a href="https://github.com/Beatbaah" class="social-link" target="_blank" rel="noopener" title="GitHub"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.41-.01 2.74 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
-    <a href="https://www.linkedin.com/in/bbaah2/" class="social-link" target="_blank" rel="noopener" title="LinkedIn"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    <a href="https://x.com/larahvega" class="social-link" target="_blank" rel="noopener" title="X"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-    <a href="https://instagram.com/la_rah_ve_ga" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-    <a href="https://wa.me/233245989981" class="social-link" target="_blank" rel="noopener" title="WhatsApp"><svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+<!-- ───────── WORK ───────── -->
+<section id="work" class="section">
+  <p class="label" data-reveal>// selected work</p>
+  <h2 data-decrypt data-reveal>Things I've built and shipped</h2>
+
+  <div class="work-grid">
+    <article class="card project feature-wide" id="project-proassess" data-reveal>
+      <div class="card-media"><img src="assets/projects/proassess.webp" width="1200" height="686" loading="lazy" alt="ProAssess dashboard screenshot"></div>
+      <div class="card-body">
+        <p class="label">01 · AI SaaS</p>
+        <h3>ProAssess</h3>
+        <p class="tagline">AI hiring assessment platform</p>
+        <p>Recruiters invite candidates by email, candidates take four timed reasoning tests, and Gemini writes a score summary the moment they submit. I built the candidate pipeline, a side-by-side comparison view for shortlisting, and GDPR-compliant erasure of candidate data.</p>
+        <ul class="chips"><li>react 19</li><li>typescript</li><li>firebase</li><li>gemini</li></ul>
+        <p class="links"><a href="https://github.com/Beatbaah/ProAssess" target="_blank" rel="noopener">code ↗</a></p>
+      </div>
+    </article>
+
+    <article class="card project" id="project-amansie-ride" data-reveal>
+      <div class="card-media"><img src="assets/projects/amansie-ride.webp" width="1200" height="750" loading="lazy" alt="Amansie Ride operations console sign-in screen"></div>
+      <div class="card-body">
+        <p class="label">02 · Mobility · Full-stack</p>
+        <h3>Amansie Ride</h3>
+        <p class="tagline">Ride-hailing for the districts the big apps don't serve</p>
+        <p>Three apps and a backend: a rider app, a driver app and an operations console. Live dispatch, the full trip lifecycle, cash and Mobile Money records, zone-based fares and ratings, all on Firestore listeners and Cloud Functions.</p>
+        <ul class="chips"><li>react native</li><li>expo</li><li>firebase</li><li>cloud functions</li><li>react</li></ul>
+        <p class="links"><span class="muted">in pilot · private repo</span></p>
+      </div>
+    </article>
+
+    <article class="card project" id="project-mysoc" data-reveal>
+      <div class="card-media"><img src="assets/projects/mysoc.webp" width="719" height="680" loading="lazy" alt="mySOC console showing a beaconing alert on network traffic"></div>
+      <div class="card-body">
+        <p class="label">03 · Security</p>
+        <h3>mySOC</h3>
+        <p class="tagline">Network security monitoring &amp; incident response console</p>
+        <p>A sensor turns traffic and device logs into flows, runs detections mapped to MITRE ATT&amp;CK, and folds them into a deduplicated, risk-scored alert queue. Analysts triage, open cases, hunt and hand over between shifts.</p>
+        <ul class="chips"><li>python</li><li>fastapi</li><li>postgresql</li><li>react</li><li>mitre att&amp;ck</li></ul>
+        <p class="links"><a href="https://github.com/Beatbaah/mySOC" target="_blank" rel="noopener">code ↗</a></p>
+      </div>
+    </article>
+
+    <article class="card project" id="project-bma-website" data-reveal>
+      <div class="card-media"><img src="assets/projects/bma-website.webp" width="1200" height="750" loading="lazy" alt="Bekwai Municipal Assembly website redesign homepage"></div>
+      <div class="card-body">
+        <p class="label">04 · GovTech · Web</p>
+        <h3>BMA website</h3>
+        <p class="tagline">Redesign of the Bekwai Municipal Assembly website</p>
+        <p>Replaced an end-of-life Drupal site served over plain HTTP with fast static pages: HTTPS-only with a strict Content-Security-Policy, about 75&nbsp;KB to first view (down from 3.7&nbsp;MB), organised around what residents come to do.</p>
+        <ul class="chips"><li>astro</li><li>typescript</li><li>static</li><li>security headers</li></ul>
+        <p class="links"><span class="muted">concept · awaiting adoption</span></p>
+      </div>
+    </article>
+
+    <article class="card project" id="project-ghana-card-patch-detection" data-reveal>
+      <div class="card-media card-stat" aria-hidden="true">
+        <div class="stat-figure"><span class="stat-big">101<span class="muted">/103</span></span><span class="stat-label">adversarial-patch attacks detected on the held-out set</span></div>
+      </div>
+      <div class="card-body">
+        <p class="label">05 · Research · AI security</p>
+        <h3>Ghana Card patch detection</h3>
+        <p class="tagline">MSc thesis (KNUST, 2026)</p>
+        <p>A CNN that detects adversarial-patch (spot evasion) attacks on Ghana Card face photos. It caught 101 of 103 attacks on a held-out set, with error analysis and an honest look at its limits under adaptive attackers.</p>
+        <ul class="chips"><li>python</li><li>pytorch</li><li>cnn</li><li>adversarial ml</li></ul>
+        <p class="links"><a href="https://github.com/Beatbaah/ghana-card-patch-detection" target="_blank" rel="noopener">code ↗</a></p>
+      </div>
+    </article>
   </div>
+
+  <h3 class="more-title" data-reveal>More work</h3>
+  <ul class="more-list">
+    <li id="project-dream-trip-planner" data-reveal><span class="more-name">Dream Trip Planner</span><span class="more-desc">AI travel agent: Claude and vector search match trips to what you describe</span><span class="more-stack">flutter · node · claude · cloud run</span><a href="https://github.com/Beatbaah/dream-trip-planner" target="_blank" rel="noopener" aria-label="Dream Trip Planner code">code ↗</a></li>
+    <li id="project-civicmind-ai" data-reveal><span class="more-name">CivicMind AI</span><span class="more-desc">Municipal revenue and performance tracking, with Gemini insights</span><span class="more-stack">react · mongodb · gemini</span><a href="https://github.com/Beatbaah/civicmind-ai" target="_blank" rel="noopener" aria-label="CivicMind AI code">code ↗</a></li>
+    <li id="project-excellent-susu" data-reveal><span class="more-name">Excellent Susu</span><span class="more-desc">Savings-group management: contributions, payouts and an audit trail</span><span class="more-stack">react · firebase · rbac</span><a href="https://github.com/Beatbaah/susu-management-app" target="_blank" rel="noopener" aria-label="Excellent Susu code">code ↗</a></li>
+    <li id="project-tax-system" data-reveal><span class="more-name">Tax System</span><span class="more-desc">Municipal revenue management for a real assembly client</span><span class="more-stack">react · firebase · cloud functions</span><span class="muted">private</span></li>
+    <li id="project-corporate-world" data-reveal><span class="more-name">Corporate World</span><span class="more-desc">Client e-commerce shop for a Ghanaian office-wear brand</span><span class="more-stack">firebase · firestore</span><a href="https://corporate-world-gh.web.app" target="_blank" rel="noopener" aria-label="Corporate World live site">live ↗</a></li>
+    <li id="project-haske" data-reveal><span class="more-name">Haske Spa &amp; Events</span><span class="more-desc">Client booking site that routes straight into WhatsApp</span><span class="more-stack">firebase hosting · booking flow</span><a href="https://haskespaandevents.web.app" target="_blank" rel="noopener" aria-label="Haske Spa and Events live site">live ↗</a></li>
+  </ul>
+</section>
+
+<!-- ───────── WHAT I DO ───────── -->
+<section id="capabilities" class="section">
+  <p class="label" data-reveal>// what I do</p>
+  <h2 data-decrypt data-reveal>Full product, plus the parts that keep it safe</h2>
+  <div class="cap-grid">
+    <div class="cap" data-reveal>
+      <h3>Full-stack &amp; AI products</h3>
+      <p>Web and mobile apps from first screen to production, with LLMs doing real work inside them, not bolted on.</p>
+      <ul class="chips"><li>react</li><li>typescript</li><li>react native</li><li>flutter</li><li>claude</li><li>gemini</li><li>openai</li></ul>
+    </div>
+    <div class="cap" data-reveal>
+      <h3>Cloud &amp; backend</h3>
+      <p>APIs, data models, serverless functions and the security rules that keep the data honest.</p>
+      <ul class="chips"><li>node</li><li>python</li><li>fastapi</li><li>firebase</li><li>gcp</li><li>cloud run</li><li>postgresql</li><li>mongodb</li></ul>
+    </div>
+    <div class="cap" data-reveal>
+      <h3>Security</h3>
+      <p>Detection engineering, incident response and hardening, from MITRE-mapped alerts to strict CSPs.</p>
+      <ul class="chips"><li>mitre att&amp;ck</li><li>threat hunting</li><li>incident response</li><li>csp &amp; headers</li><li>adversarial ml</li></ul>
+    </div>
+    <div class="cap" data-reveal>
+      <h3>Data &amp; analytics</h3>
+      <p>Surveys, data-quality monitoring and dashboards that people in government actually use.</p>
+      <ul class="chips"><li>stata</li><li>sql</li><li>power bi</li><li>excel</li><li>pandas</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── BACKGROUND ───────── -->
+<section id="background" class="section">
+  <p class="label" data-reveal>// background</p>
+  <h2 data-decrypt data-reveal>From statistics to software</h2>
+  <div class="log">
+    <details data-reveal>
+      <summary><span class="ts">2023-11 → now</span><span class="role">Municipal Statistician</span><span class="org">Local Government Service · Bekwai Municipal Assembly</span></summary>
+      <ul>
+        <li>Analyzed data from 100,000+ citizens, achieving 25% efficiency improvement in resource allocation across 161 communities.</li>
+        <li>Developed surveys reaching 130,000+ respondents with 90% completion rate, boosting satisfaction scores by 15%.</li>
+        <li>Utilized 20 financial models improving budget accuracy by 30%, supporting GHS 4M annual revenue forecasts.</li>
+        <li>Designed 5 dynamic dashboards used by 50 municipal members, reducing decision-making delays by 40%.</li>
+      </ul>
+    </details>
+    <details data-reveal>
+      <summary><span class="ts">2024-12</span><span class="role">Constituency Collation Officer</span><span class="org">Electoral Commission Ghana · 2024 General Election</span></summary>
+      <ul>
+        <li>Collated and verified presidential and parliamentary election results from all polling stations.</li>
+        <li>Ensured data consistency, accuracy, and integrity through cross-checking and validation of results sheets.</li>
+      </ul>
+    </details>
+    <details data-reveal>
+      <summary><span class="ts">2023-12 → 2024-04</span><span class="role">Zonal Data Quality Monitor</span><span class="org">Ghana Statistical Service · Bekwai / Amansie West</span></summary>
+      <ul>
+        <li>Mentored 188 supervisors and enumerators, reducing operational errors by 50%.</li>
+        <li>Leveraged STATA and Excel to cut data processing time by 40%, boosting throughput by 20%.</li>
+        <li>Ensured 288 Enumeration Zones were fully covered, capturing all 13,050 businesses in the Integrated Business Establishment Survey.</li>
+      </ul>
+    </details>
+    <details data-reveal>
+      <summary><span class="ts">2022-01 → 2023-08</span><span class="role">Assistant Statistician</span><span class="org">Local Government Service · Bekwai Municipal Assembly</span></summary>
+      <ul>
+        <li>Conducted data analysis to identify trends and patterns in large municipal datasets.</li>
+        <li>Created detailed pivot reports and visualizations using Excel and Power BI for key stakeholders.</li>
+      </ul>
+    </details>
+    <details data-reveal>
+      <summary><span class="ts">2021-06 → 2021-09</span><span class="role">Data Quality Monitor</span><span class="org">Ghana Statistical Service · Ga North</span></summary>
+      <ul>
+        <li>Surveyed 87,556 households and 93,833 structures across 36 supervisory areas.</li>
+        <li>Used STATA to identify hidden errors across 186 Enumeration Areas daily.</li>
+      </ul>
+    </details>
+    <details data-reveal>
+      <summary><span class="ts">2019-09 → 2020-09</span><span class="role">Data Analyst Intern</span><span class="org">SSNIT · Kumasi</span></summary>
+      <ul>
+        <li>Conducted data validation, cleanup, and SSNIT contribution calculations for companies.</li>
+        <li>Achieved significant productivity gains through Excel optimization across the team.</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="edu-certs">
+    <div data-reveal>
+      <h3>Education</h3>
+      <ul class="plain">
+        <li><span>MSc Cybersecurity &amp; Digital Forensics</span><span class="muted">KNUST · 2026</span></li>
+        <li><span>BSc Statistics</span><span class="muted">KNUST</span></li>
+      </ul>
+    </div>
+    <div data-reveal>
+      <h3>Certifications</h3>
+      <ul class="plain">
+        <li><span>Certified Cybersecurity Educator Professional (CCEP)</span><span class="muted">2025</span></li>
+        <li><span>Google Cybersecurity Certificate</span><span class="muted">Google · 2024</span></li>
+        <li><span>Respond &amp; Mitigate Security Threats</span><span class="muted">IBM · 2024</span></li>
+        <li><span>Mastercard Cybersecurity Job Simulation</span><span class="muted">Forage · 2024</span></li>
+        <li><span>SQL Fundamentals</span><span class="muted">Dataquest.io · 2023</span></li>
+        <li><span>Power BI in Data Analytics</span><span class="muted">Forage · 2022</span></li>
+        <li><span>Python Programming Foundations</span><span class="muted">Udacity · 2022</span></li>
+        <li><span>Excel Fundamentals: Formulas for Finance</span><span class="muted">CFI · 2022</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TESTIMONIALS ───────── -->
+<section id="testimonials" class="section">
+  <p class="label" data-reveal>// what people say</p>
+  <h2 class="visually-hidden">Testimonials</h2>
+  <div class="carousel" data-carousel data-reveal>
+    <div class="slides">
+      <figure class="slide">
+        <blockquote>Beatrice delivered an exceptional dashboard that transformed how our team interprets municipal data. Her ability to translate complex data into actionable insights is outstanding.</blockquote>
+        <figcaption><strong>K. Asante</strong> · Department Head, Bekwai Municipal Assembly</figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote>Her data quality monitoring was impeccable. She trained our entire team and ensured zero errors in the final dataset. A true professional with remarkable statistical expertise.</blockquote>
+        <figcaption><strong>E. Acheampong</strong> · District Manager, Ghana Statistical Service</figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote>Beatrice brings a unique combination of statistical rigor and cybersecurity awareness. She doesn't just analyze data, she protects it. I'd recommend her without hesitation.</blockquote>
+        <figcaption><strong>M. Owusu</strong> · Senior Statistician, Local Government Service</figcaption>
+      </figure>
+    </div>
+    <div class="carousel-controls" hidden>
+      <button type="button" data-dir="prev" aria-label="Previous testimonial">←</button>
+      <span class="carousel-count" aria-live="polite">1 / 3</span>
+      <button type="button" data-dir="next" aria-label="Next testimonial">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CONTACT ───────── -->
+<section id="contact" class="section">
+  <p class="label" data-reveal>// contact</p>
+  <h2 data-decrypt data-reveal>Let's build something</h2>
+  <div class="contact-grid">
+    <div class="contact-col" data-reveal>
+      <h3>Hiring?</h3>
+      <p>I'm open to software and AI engineering roles, remote or in Ghana. My CV has the full detail.</p>
+      <ul class="contact-links">
+        <li><span class="muted">email</span><a href="mailto:beatrice.baah3@hotmail.com">beatrice.baah3@hotmail.com</a></li>
+        <li><span class="muted">linkedin</span><a href="https://linkedin.com/in/bbaah2" target="_blank" rel="noopener">linkedin.com/in/bbaah2</a></li>
+        <li><span class="muted">github</span><a href="https://github.com/Beatbaah" target="_blank" rel="noopener">github.com/Beatbaah</a></li>
+      </ul>
+      <a class="btn btn-ghost" href="assets/Beatrice_Baah_CV.pdf" download>Download CV</a>
+    </div>
+    <div class="contact-col" data-reveal>
+      <h3>Have a project?</h3>
+      <p>Tell me what you need. The form opens your email app with everything filled in. Prefer chat? <a href="https://wa.me/233245989981" target="_blank" rel="noopener">Message me on WhatsApp</a>.</p>
+      <form class="contact-form" id="contact-form" action="mailto:beatrice.baah3@hotmail.com" method="post" enctype="text/plain">
+        <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="contact-service">What do you need?</label><input id="contact-service" name="service" placeholder="e.g. a booking site, a dashboard, an AI feature"></div>
+        <div class="field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="4" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send message →</button>
+        <p class="form-note" id="form-success" hidden>✓ Your email app is opening with this filled in. Hit send there to reach me.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p><span class="accent">~/</span>beatrice · © 2026 Beatrice Baah</p>
+  <p class="muted">psst: type <code>help</code> in the terminal up top.</p>
 </footer>
-
-<script>
-window.addEventListener('scroll', () => {
-  document.getElementById('main-nav').classList.toggle('nav-scrolled', window.scrollY > 20);
-});
-
-function toggleMobile() {
-  const nav = document.getElementById('mobile-nav');
-  const toggle = document.getElementById('mob-toggle');
-  nav.classList.toggle('open');
-  toggle.classList.toggle('nav-open');
-  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-}
-function closeMobile() {
-  document.getElementById('mobile-nav').classList.remove('open');
-  document.getElementById('mob-toggle').classList.remove('nav-open');
-  document.body.style.overflow = '';
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-const barObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
-          setTimeout(() => bar.classList.add('animated'), i * 120);
-        });
-      }, 200);
-      barObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-const sk = document.getElementById('skills');
-if (sk) barObserver.observe(sk);
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const f = e.target;
-  const firstName = f.firstName.value.trim();
-  const lastName = f.lastName.value.trim();
-  const email = f.email.value.trim();
-  const service = f.service.value.trim();
-  const message = f.message.value.trim();
-  const subject = `Portfolio inquiry${service ? ': ' + service : ''}`;
-  const body =
-    `Name: ${firstName} ${lastName}\n` +
-    `Email: ${email}\n` +
-    (service ? `Service needed: ${service}\n` : '') +
-    `\n${message}`;
-  const mailto = `mailto:beatrice.baah3@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailto;
-  document.getElementById('form-success').style.display = 'block';
-  f.reset();
-}
-
-/* Cursor sparkle on hero */
-const hero = document.getElementById('hero');
-if (hero) {
-  hero.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.85) {
-      const spark = document.createElement('div');
-      spark.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:4px;height:4px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:0;transition:all 0.8s ease;opacity:0.7`;
-      document.body.appendChild(spark);
-      requestAnimationFrame(() => {
-        spark.style.transform = `translate(${(Math.random()-0.5)*40}px,${-20-Math.random()*20}px) scale(0)`;
-        spark.style.opacity = '0';
-      });
-      setTimeout(() => spark.remove(), 900);
-    }
-  });
-}
-</script>
 </body>
 </html>

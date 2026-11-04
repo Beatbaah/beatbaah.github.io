@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not found · Beatrice Baah</title>
+<meta name="theme-color" content="#0b0d0c">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box;
+         background: #0b0d0c; color: #9aa29c; font: 400 15px/1.7 'Geist Mono', ui-monospace, Menlo, monospace; }
+  .box { width: 100%; max-width: 520px; border: 1px solid #ffffff33; border-radius: 12px; background: #0f1211; padding: 20px 22px; }
+  .p { color: #c6f36b; }
+  .e { color: #ff8a7a; }
+  a { color: #c6f36b; }
+  a:focus-visible { outline: 2px solid #c6f36b; outline-offset: 3px; }
+</style>
+</head>
+<body>
+  <main class="box">
+    <div><span class="p">beatrice@portfolio:~$</span> cd <span id="path">/missing</span></div>
+    <div class="e">cd: no such page</div>
+    <div><span class="p">beatrice@portfolio:~$</span> <a href="/">cd ~</a> <span>← back to the homepage</span></div>
+  </main>
+  <script>document.getElementById('path').textContent = location.pathname;</script>
+</body>
+</html>
