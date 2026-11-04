@@ -16,7 +16,7 @@ export const DATA = {
   stats: [
     { value: '8+', label: 'products shipped' },
     { value: '5+', label: 'years in data & government' },
-    { value: '100K+', label: 'citizens served' },
+    { value: '50+', label: 'people using my dashboards' },
   ],
 
   featured: [
@@ -54,11 +54,10 @@ export const DATA = {
     },
     {
       slug: 'ghana-card-patch-detection', title: 'Ghana Card patch detection',
-      tagline: 'MSc thesis (KNUST, 2026): a CNN that detects adversarial-patch attacks on Ghana Card face photos',
-      built: 'Detects 101 of 103 adversarial-patch (spot evasion) attacks on a held-out set, with error analysis and an honest look at limits under adaptive attackers.',
-      stack: ['python', 'pytorch', 'cnn', 'adversarial ml'],
+      tagline: 'MSc thesis (KNUST): a TensorFlow/Keras CNN that flags adversarial patches on Ghana Card-style face photos',
+      built: 'A CNN (TensorFlow/Keras) that classifies Ghana Card-style face photos as clean or carrying an adversarial patch (\u201cspot evasion\u201d attack). Built for my MSc thesis at KNUST, with a discussion of how such detectors hold up against attackers who adapt to them.',
+      stack: ['python', 'tensorflow', 'keras', 'cnn', 'adversarial ml'],
       links: { code: 'https://github.com/Beatbaah/ghana-card-patch-detection' },
-      stat: { value: '101/103', label: 'attacks detected on the held-out set' },
     },
   ],
 
@@ -82,8 +81,8 @@ export const DATA = {
       links: { code: 'https://github.com/Beatbaah/susu-management-app' },
     },
     {
-      slug: 'tax-system', title: 'Tax System',
-      tagline: 'Municipal revenue management for a real assembly client',
+      slug: 'tax-system', title: 'Bekwai Tax Revenue',
+      tagline: 'Municipal revenue system: collection, taxpayer records, e-payment, receipt checks',
       stack: ['react', 'firebase', 'cloud functions'],
       links: {},
     },
@@ -109,19 +108,20 @@ export const DATA = {
   ],
 
   experience: [
-    { start: '2023-11', end: 'now', title: 'Municipal Statistician', org: 'Local Government Service · Bekwai Municipal Assembly',
-      bullets: ['Analyzed data from 100,000+ citizens, achieving 25% efficiency improvement in resource allocation across 161 communities.',
-        'Designed 5 dynamic dashboards used by 50 municipal members, reducing decision-making delays by 40%.'] },
-    { start: '2024-12', end: '2024-12', title: 'Constituency Collation Officer', org: 'Electoral Commission Ghana · Bekwai Constituency',
+    { start: '2023-11', end: 'now', title: 'Municipal Statistician; Acting Head, Statistics Department', org: 'Local Government Service · Bekwai Municipal Assembly',
+      bullets: ['Compile and validate administrative data from all Assembly departments each quarter and report to the Ghana Statistical Service.',
+        'Built Power BI dashboards used by 50+ stakeholders, reducing decision-making delays by about 40%.',
+        'Prepare revenue trend analyses and forecasts for the Municipal Coordinating Director, and figures for the development plan and budget; supervise and train department staff.'] },
+    { start: '2024-11', end: '2024-12', title: 'Constituency Collation Officer', org: 'Electoral Commission Ghana · Bekwai Constituency',
       bullets: ['Collated and verified presidential and parliamentary election results from all polling stations.'] },
     { start: '2023-12', end: '2024-04', title: 'Zonal Data Quality Monitor', org: 'Ghana Statistical Service · Bekwai / Amansie West',
-      bullets: ['Mentored 188 supervisors and enumerators, reducing operational errors by 50%.'] },
+      bullets: ['Supervised data quality for 188 field staff across 288 enumeration zones in the Integrated Business Establishment Survey, using STATA and Excel checks to catch and correct errors.'] },
     { start: '2022-01', end: '2023-08', title: 'Assistant Statistician', org: 'Local Government Service · Bekwai Municipal Assembly',
-      bullets: ['Created detailed pivot reports and visualizations using Excel and Power BI for key stakeholders.'] },
+      bullets: ['Analysed municipal datasets and produced Excel and Power BI reports for planning and policy.'] },
     { start: '2021-06', end: '2021-09', title: 'Data Quality Monitor', org: 'Ghana Statistical Service · Ga North',
-      bullets: ['Surveyed 87,556 households and 93,833 structures across 36 supervisory areas.'] },
-    { start: '2019-09', end: '2020-09', title: 'Data Analyst Intern', org: 'SSNIT · Kumasi',
-      bullets: ['Conducted data validation, cleanup, and SSNIT contribution calculations for companies.'] },
+      bullets: ['Used STATA daily to find and resolve data errors across 186 enumeration areas.'] },
+    { start: '2019-09', end: '2020-09', title: 'Data Analyst (National Service)', org: 'SSNIT · Kumasi',
+      bullets: ['Validated and cleaned contribution data and prepared contribution reports for client companies.'] },
   ],
 
   education: [

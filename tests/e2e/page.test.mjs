@@ -43,6 +43,14 @@ test('all content visible with JS disabled', () => withPage({ javaScriptEnabled:
   assert.ok((await page.locator('[data-terminal] .term-output').innerText()).includes('Software & AI engineer'));
 }));
 
+test('thesis copy: TensorFlow/Keras, no PyTorch, no 101/103', () => withPage({}, async (page) => {
+  const html = await page.content();
+  assert.doesNotMatch(html, /pytorch|101\/103|101 of 103/i);
+  const card = await page.locator('#project-ghana-card-patch-detection').innerText();
+  assert.match(card, /TensorFlow\/Keras/);
+  assert.match(card, /attackers who adapt/);
+}));
+
 test('no horizontal scroll at 375', () => withPage({ width: 375 }, async (page) => {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth) <= 375);
 }));

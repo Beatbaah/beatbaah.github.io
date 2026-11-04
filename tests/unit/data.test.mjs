@@ -23,8 +23,11 @@ test('every project has title, tagline, non-empty stack', () => {
   }
 });
 
-test('thesis has stat 101/103', () => {
-  assert.equal(DATA.featured[4].stat.value, '101/103');
+test('thesis: TensorFlow/Keras, no headline stat for now', () => {
+  const t = DATA.featured[4];
+  assert.equal(t.stat, undefined);
+  assert.ok(t.stack.includes('tensorflow') && t.stack.includes('keras'));
+  assert.doesNotMatch(JSON.stringify(t), /pytorch|101/i);
 });
 
 test('contact has no instagram/tiktok', () => {

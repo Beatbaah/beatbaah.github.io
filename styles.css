@@ -192,6 +192,8 @@ code { font-family: var(--mono); color: var(--accent); }
 .stat-figure { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .stat-big { font: 600 clamp(56px, 9vw, 88px)/1 var(--sans); letter-spacing: -0.05em; color: var(--accent); }
 .stat-big .muted { color: var(--muted); font-size: .5em; letter-spacing: -0.02em; }
+.stat-word { font-size: clamp(34px, 5vw, 48px); letter-spacing: -0.03em; }
+.stat-word .muted { font-size: .6em; }
 .stat-label { font: 400 12px var(--mono); color: var(--muted); max-width: 26ch; }
 
 .more-title { margin: 56px 0 8px; font-size: 18px; }
